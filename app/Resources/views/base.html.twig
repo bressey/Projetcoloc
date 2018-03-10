@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
+         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
+        <style>
+            .footer {
+                margin-bottom: 35px;
+                margin-top: 5cm;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: grey;
+                color: white;
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/Developpement web/Projet/Projetcoloc/web/app_dev.php/{_locale}/">AlloFilms</a>
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haria-haspopup="true" aria-expanded="false">
+						<span class="glyphicon glyphicon-globe"></span> <span class="carret"></span> </a>
+						<ul class="dropdown-menu">
+							<li class="active"><a href="../fr/">Français</a> </li>
+							<li><a href="../en/">English</a> </li>
+						</ul>
+					</li>
+					<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ 'sign_up'|trans }}</a></li>
+                    <li><a href="Co/connect/"><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    {% block body %}
+                        
+
+                    {% endblock %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12 footer">
+                    {% block footer %}
+                    <p>Copyright (c) 2018 L3 Miage - Université de Nantes </p>
+                    {% endblock %}
+
+                </div>
+            </div>
+        </div>
+
+        {% block javascripts %}
+            <!-- jQuery library -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+            <!-- Latest compiled JavaScript -->
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        {% endblock %}
     </body>
 </html>

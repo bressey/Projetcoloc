@@ -8,7 +8,7 @@ use Symfony\Component\HttpFoundation\Request;
 class IndexController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/{_locale}/", name="homepage")
      */
     public function indexAction(Request $request)
     {

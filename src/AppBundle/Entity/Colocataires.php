@@ -21,12 +21,6 @@ class Colocataires
      */
     private $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="Co_id", type="string", length=6, unique=true)
-     */
-    private $coId;
 
     /**
      * @var string
@@ -62,6 +56,21 @@ class Colocataires
      * @ORM\Column(name="Id_coloc", type="integer")
      */
     private $idColoc;
+	
+	/**
+	* @var string
+	*
+	* @ORM\Column(name="Email", type="string")
+	*/
+	private $Email;
+	
+	/**
+	* @var string
+	*
+	* @ORM\Column(name="Password", type="string")
+	*/
+	private $Password;
+	
 
 
     /**
@@ -73,29 +82,29 @@ class Colocataires
     {
         return $this->id;
     }
-
-    /**
-     * Set coId
+	
+	/**
+     * Set Password
      *
-     * @param string $coId
+     * @param string $password
      *
      * @return Colocataires
      */
-    public function setCoId($coId)
+    public function setPassword($password)
     {
-        $this->coId = $coId;
+        $this->Password = $password;
 
         return $this;
     }
 
     /**
-     * Get coId
+     * Get Password
      *
      * @return string
      */
-    public function getCoId()
+    public function getPassword()
     {
-        return $this->coId;
+        return $this->Password;
     }
 
     /**
@@ -216,6 +225,30 @@ class Colocataires
     public function getIdColoc()
     {
         return $this->idColoc;
+    }
+
+    /**
+     * Set Email
+     *
+     * @param string $Email
+     *
+     * @return Colocataires
+     */
+    public function setEmail($Email)
+    {
+        $this->Email = $Email;
+
+        return $this;
+    }
+
+    /**
+     * Get Email
+     *
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->Email;
     }
 }
 
