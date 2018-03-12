@@ -13,7 +13,7 @@ class ColocationsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('idColoc')->add('adresse')->add('nbPers');
+        $builder->add('adresse')->add('ville')->add('nbPers')->add('nbChambre')->add('type');
     }/**
      * {@inheritdoc}
      */
