@@ -20,20 +20,68 @@
 	* @Route("/{_locale}/Colocation")
 	*/
 	class ColocationController extends Controller
-	{
+	{	
+		/**
+		* @Route("/",name="colocation_index")
+		* @return \Symfony\Component\HttpFoundaztion\Response
+		* @throws \LogicException
+		*/
+		public function indexAction(Request $request)
+		{
+			$repository=$this->getDoctrine()->getRepository(Colocations::class);
+			$Coloc=$repository->findAll();
+			dump($Coloc);
+			
+		    return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+		}
+		
+		
 		/**
 		* @Route("/Coloc/", name="Ajoutcoloc")
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/
 		public function colocAjout(Request $request){
-			if(!isset($_POST['Ajouter'])){
+			if(!isset($_POST['Ajout'])){
  				$Coloc=new Colocations();
 				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
  				$form->handleRequest($request);
  				if(!$form->isSubmitted() || !$form->isValid()){
  					return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
  				}
+			}
+			else{
+				$Coloc=new Colocations();
+				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc')]);
+				$form->handleRequest($request);
+				$em=$this->getDoctrine()->getManager();
+				$em->persist($Coloc);
+				$em->flush();
+				unset($_POST);
+				return $this->redirectToRoute('homepage');
+			}
+		}
+		
+		/**
+		* @Route("/edit/{id}",requirements={"id": "\d+"}, name="editColoc")
+		*/
+		
+		public function updateAction(Colocations $Coloc,Request $request)
+		{
+			if(!isset($_POST['Valider'])){
+				$form = $this->createForm(ColocationsType::class,$Coloc);
+				$form->handleRequest($request);
+				if(!$form->isSubmitted() || !$form->isValid()){
+					return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),]);
+				}
+			}
+			else{
+				$form = $this->createForm(ColocationsType::class,$Coloc);
+				$form->handleRequest($request);
+				$em=$this->getDoctrine()->getManager();
+				$em->flush();
+				unset($_POST);
+				return $this->redirectToRoute('homepage');
 			}
 		}
 	}

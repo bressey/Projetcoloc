@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	
+    <div class="container">
+		<div class="span10 offset1">
+    		<div class="row">
+		    	<h3>{{ 'colocations'|trans }}</h3>
+		    </div>
+		<form class="form-horizontal" action="" method="post">
+			<div class="control-group">
+			    {{form_label(edit_coloc_form.nbPers)}}
+				{{form_errors(edit_coloc_form.nbPers)}}
+				{{form_widget(edit_coloc_form.nbPers)}}
+			</div>
+			<div class="control-group">
+			    {{form_label(edit_coloc_form.nbChambre)}}
+				{{form_errors(edit_coloc_form.nbChambre)}}
+				{{form_widget(edit_coloc_form.nbChambre)}}
+			</div>
+			<div class="control-group">
+			    {{form_label(edit_coloc_form.adresse)}}
+				{{form_errors(edit_coloc_form.adresse)}}
+				{{form_widget(edit_coloc_form.adresse)}}
+			</div>
+			<div class="control-group">
+			    {{form_label(edit_coloc_form.ville)}}
+				{{form_errors(edit_coloc_form.ville)}}
+				{{form_widget(edit_coloc_form.ville)}}
+			</div>
+			<div class="control-group">
+			    {{form_label(edit_coloc_form.type)}}
+				{{form_errors(edit_coloc_form.type)}}
+				{{form_widget(edit_coloc_form.type)}}
+			</div>
+
+			</div>
+			<input type="submit" name="Valider" value="Valider" class="btn btn-success"/>
+			<a class="btn" href="../../colocation/">{{ 'action.cancel'|trans }}</a>
+		</form>
+
+
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+</style>
+{% endblock %}
