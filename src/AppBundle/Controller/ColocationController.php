@@ -22,22 +22,18 @@
 	class ColocationController extends Controller
 	{
 		/**
-		* @Route("/Coloc", name="Ajoutcoloc")
+		* @Route("/Coloc/", name="Ajoutcoloc")
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/
 		public function colocAjout(Request $request){
-			// if(!isset($_POST['coloc'])){
-				$Coloc=new Colocations();
-				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Coloc'),]);
-				$form->handleRequest($request);
-				if(!$form->isSubmitted() || !$form->isValid()){
-					return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
-				}
-			// }
-			
-				
-			
+			$Coloc=new Colocations();
+			$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
+			$form->handleRequest($request);
+			if(!$form->isSubmitted() || !$form->isValid()){
+				return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
+			}
+			return $this->redirectToRoute('homepage');
 		}
 	}
 	

@@ -38,7 +38,7 @@
 						</ul>
 					</li>
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ 'sign_up'|trans }}</a></li>
-                    <li><a href="Co/connect/"><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
+                    <li><a href="Co/connect"><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
                 </ul>
             </div>
         </nav>
@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-					<a href="Colocation/Coloc/"><span class="glyphicon glyphicon-log-in"></span>Ajouter coloc</a>
+					<a href={{ path('Ajoutcoloc') }} type="btn"> Ajout coloc </a>
                     {% block body %}
                         
 
