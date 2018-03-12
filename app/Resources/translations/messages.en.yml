@@ -1,0 +1,20 @@
+sign_up: 'Sign Up'
+login: Login
+action.cancel: Cancel
+colocations: Flats
+nbChambre: 'Number of rooms'
+nbPers: 'Number of Persons'
+adresse: Adress
+show: Details
+edit: Edit
+delete: Delete
+Ajout_coloc: Add flat
+label.maker: __label.maker
+label.made_at: __label.made_at
+label.summary: __label.summary
+title.roles_list: __title.roles_list
+label.name: __label.name
+label.actorName: __label.actorName
+label.actorFirstName: __label.actorFirstName
+action.edit_film: __action.edit_film
+action.delete_film: __action.delete_film

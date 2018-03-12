@@ -1,0 +1,20 @@
+sign_up: 's''inscrire'
+login: 'se connecter'
+action.cancel: Retour
+colocations: colocations
+nbChambre: 'Nombre de chmabre'
+nbPers: 'Nombre de Personnes'
+adresse: Adresse
+show: Détail
+edit: Editer
+delete: Supprimer
+Ajout_coloc: Ajout colocation
+label.maker: __label.maker
+label.made_at: __label.made_at
+label.summary: __label.summary
+title.roles_list: __title.roles_list
+label.name: __label.name
+label.actorName: __label.actorName
+label.actorFirstName: __label.actorFirstName
+action.edit_film: __action.edit_film
+action.delete_film: __action.delete_film
