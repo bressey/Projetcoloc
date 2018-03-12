@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container">
 		<div class="row">
-			<div class="col-md-12">
+			<div class="col-md-9">
 				<div class="panel panel-success">
 					
 					<h1> {{ 'colocations'|trans }} </h1>
@@ -36,7 +36,7 @@
 			</div>
 		</div>
 	</div>
-	 <a href={{ path('Ajoutcoloc') }} class="btn btn-success"> Ajout coloc </a>
+	 <a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
 {% endblock %}
 
 {% block stylesheets %}
