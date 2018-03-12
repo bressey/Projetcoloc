@@ -85,6 +85,18 @@
 			}
 		}
 		
+		/**
+		* @Route("/delete/{id}", requirements={"id": "\d+"}, name="deleteColoc")
+		*/
+		public function deleteAction(Colocations $Coloc,Request $request)
+		{
+			$em=$this->getDoctrine()->getManager();
+			$em->remove($Coloc);
+			$em->flush();
+			
+			return $this->redirectToRoute('homepage');
+		}
+		
 
 	}
 	
