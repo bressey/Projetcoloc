@@ -27,16 +27,35 @@
 		* @throws \LogicException
 		*/
 		public function coConnect(Request $request){
-			$connect=false;
-			$Coloc=new Colocataires();
-			$form = $this->createForm(ColocatairesType::class,$Coloc,[ 'action'=>$this->generateUrl('Co_connect'),]);
-			$form->handleRequest($request);
-			if(!$form->isSubmitted() || !$form->isValid()){
-				return $this->render('co/connect.html.twig',['connect_co_form'=>$form->createView(),]);
+			if(!isset($_POST['valide'])){
+				$Coloc=new Colocataires();
+				$form = $this->createForm(ColocatairesType::class,$Coloc,[ 'action'=>$this->generateUrl('Co_connect'),]);
+				$form->handleRequest($request);
+				if(!$form->isSubmitted() || !$form->isValid()){
+					return $this->render('co/connect.html.twig',['connect_co_form'=>$form->createView(),]);
+				}
 			}
-			
 			else{
-				return $this->redirectToRoute('homepage');
+				$connect=false;
+				$id=0;
+				$Coloc=new Colocataires();
+				$form = $this->createForm(ColocatairesType::class,$Coloc,[ 'action'=>$this->generateUrl('Co_connect'),]);
+				$form->handleRequest($request);
+				$repository=$this->getDoctrine()->getRepository(Colocataires::class);
+				$colocs=$repository->findAll();
+				foreach($colocs as $coloc){
+					if($coloc.getEmail()==$Coloc.getEmail() and $coloc.getPassword() == $Coloc.getPassword()){
+						$connect=true;
+						$id=$coloc.getId();
+					}
+				}
+				if($connect){
+					return $this->redirectToRoute('homepageconnect',$id);
+				}
+				else{
+					return $this->redirectToRoute('homepage');
+				}
+				
 			}
 		}
 	}
