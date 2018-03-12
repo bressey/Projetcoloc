@@ -27,13 +27,14 @@
 		* @throws \LogicException
 		*/
 		public function colocAjout(Request $request){
-			$Coloc=new Colocations();
-			$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
-			$form->handleRequest($request);
-			if(!$form->isSubmitted() || !$form->isValid()){
-				return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
+			if(!isset($_POST['Ajouter'])){
+ 				$Coloc=new Colocations();
+				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
+ 				$form->handleRequest($request);
+ 				if(!$form->isSubmitted() || !$form->isValid()){
+ 					return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
+ 				}
 			}
-			return $this->redirectToRoute('homepage');
 		}
 	}
 	
