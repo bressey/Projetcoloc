@@ -5,13 +5,13 @@
 	<form method="POST" name="connect" class="form-horizontal" action="">
 		<div class="control-group">
 			{{form_label(coloc_form.adresse)}}
-			{{form_errors(coloc_form.adresse)}
+			{{form_errors(coloc_form.adresse)}}
 			{{form_widget(coloc_form.adresse)}}
 		</div>
 		<br>
 		<div class="control-group">
 			{{form_label(coloc_form.ville)}}
-			{{form_errors(coloc_form.vile)}}
+			{{form_errors(coloc_form.ville)}}
 			{{form_widget(coloc_form.ville)}}
 		</div>
 		<br>
@@ -20,11 +20,13 @@
 			{{form_errors(coloc_form.nbPers)}}
 			{{form_widget(coloc_form.nbPers)}}
 		</div>
+		<br>
 		<div class="control-group">
 			{{form_label(coloc_form.nbChambre)}}
 			{{form_errors(coloc_form.nbChambre)}}
 			{{form_widget(coloc_form.nbChambre)}}
 		</div>
+		<br>
 		<div class="control-group">
 			{{form_label(coloc_form.type)}}
 			{{form_errors(coloc_form.type)}}

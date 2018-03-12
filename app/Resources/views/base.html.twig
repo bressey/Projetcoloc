@@ -25,7 +25,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/Developpement web/Projet/Projetcoloc/web/app_dev.php/{_locale}/">AlloFilms</a>
+                    <a class="navbar-brand" href={{ path('homepage') }}>AlloFilms</a>
                 </div>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -38,7 +38,7 @@
 						</ul>
 					</li>
 					<li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ 'sign_up'|trans }}</a></li>
-                    <li><a href="Co/connect"><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
+                    <li><a href={{ path("Co_connect")}}><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
                 </ul>
             </div>
         </nav>
@@ -46,7 +46,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-9">
-					<a href={{ path('Ajoutcoloc') }} type="btn"> Ajout coloc </a>
+
                     {% block body %}
                         
 
