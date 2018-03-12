@@ -22,7 +22,7 @@
 	class ColocationController extends Controller
 	{	
 		/**
-		* @Route("/",name="colocation_index")
+		* @Route("/",name="homepage")
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/

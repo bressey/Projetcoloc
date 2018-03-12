@@ -1,16 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <a href={{ path('Ajoutcoloc') }} type="btn"> Ajout coloc </a>
     <div class="container">
 		<div class="row">
-			<div class="col-md-12 col-md-offset-1">
+			<div class="col-md-12">
 				<div class="panel panel-success">
 					
 					<h1> {{ 'colocations'|trans }} </h1>
 					
 					<div class="table-responsive-md" style="text-align: center">
-						<table class="table-striped">
+						<table class="table-stripped">
 					
 							<tr>
 								<th> {{ 'nbChambre ' |trans }}</th>
@@ -37,6 +36,7 @@
 			</div>
 		</div>
 	</div>
+	 <a href={{ path('Ajoutcoloc') }} class="btn btn-success"> Ajout coloc </a>
 {% endblock %}
 
 {% block stylesheets %}
