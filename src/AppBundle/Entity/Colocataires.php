@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * Colocataires
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="colocataires")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ColocatairesRepository")
  */
-class Colocataires
+class Colocataires extends BaseUser
 {
     /**
      * @var int
@@ -19,8 +20,11 @@ class Colocataires
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
-
+    protected $id;
+	public function __construct()
+	{
+		parent::__construct();
+	}
 
     /**
      * @var string
