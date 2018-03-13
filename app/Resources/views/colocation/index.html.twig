@@ -37,7 +37,7 @@ function visibilite(Id)
 									<td> {{item.getNbChambre()}}</td>
 									<td>{{item.getNbPers()}}</td> 
 									<td>{{item.adresse()}}</td> 
-									<td> <a href="" class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
+									<td> <a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
 									<td> <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
 									<td> 
 									<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
@@ -62,7 +62,18 @@ function visibilite(Id)
 
 {% block stylesheets %}
 <style>
-    body { background: #F5F5F5; font: 18px/1.5 sans-serif; }
+   body		/* Body correspond à toute la page */
+			{
+	
+				background-image: url(/../ville.jpg);
+				
+				background-size : 100%;		/*On affiche l'arrière plan à 100%*/
+				background-attachment:fixed;	/*On fixe l'arrière plan*/
+				background-repeat : no-repeat; /*Le fond ne se repettera pas*/
+				
+				font-family:Verdana;
+				
+			}
     h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
     h1 { font-size: 36px; }
     h2 { font-size: 21px; margin-bottom: 1em; }

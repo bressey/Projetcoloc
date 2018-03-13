@@ -86,6 +86,21 @@
 		}
 		
 		/**
+		*@Route("/show/{id}",requirements={"id": "\d+"}, name="showColoc")
+		*/
+		 public function showAction(Colocations $Coloc,Request $request)
+		{
+			$repository=$this->getDoctrine()->getRepository(Colocations::class);
+			$id = $Coloc->getId();
+			$find = $repository->find($id);
+			if( null != $find){
+				return $this->render('colocation/show.html.twig',['colocations'=>$Coloc,]);
+			}
+			
+			return $this->redirectToRoute('homepage');
+		}
+		
+		/**
 		* @Route("/delete/{id}", requirements={"id": "\d+"}, name="deleteColoc")
 		*/
 		public function deleteAction(Colocations $Coloc,Request $request)

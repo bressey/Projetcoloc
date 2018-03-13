@@ -1,11 +1,7 @@
 sign_up: S'inscrire
 login: Se connecter
 action.cancel: Retour
-<<<<<<< HEAD
 colocations: Colocations
-=======
-colocations: colocations
->>>>>>> origin/develop
 nbChambre: Nombre de chambre
 nbPers: Nombre de Personnes
 adresse: Adresse

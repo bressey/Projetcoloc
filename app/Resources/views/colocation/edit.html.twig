@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-	
-    <div class="container">
+	{% form_theme edit_coloc_form 'bootstrap_4_layout.html.twig' %}
+    <div id="balise" class="container">
 		<div class="span10 offset1">
     		<div class="row">
 		    	<h3>{{ 'colocations'|trans }}</h3>
@@ -35,14 +35,19 @@
 			</div>
 
 			</div>
+			</br>
 			<input type="submit" name="Valider" value="Valider" class="btn btn-success"/>
 			<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
 		</form>
+		</br>
 
-
+	</div>
 {% endblock %}
 
 {% block stylesheets %}
 <style>
+#balise { background: white; font: 18px/1.5 sans-serif;
+			border-radius: 5px;
+			padding : 30px;}
 </style>
 {% endblock %}

@@ -1,51 +1,30 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+	
     <div class="container">
 		<div class="col-md-10">
     		<div class="row">
-		    	<h3>{{film.getTitle()}}</h3>
+		    	<h3>{{'colocations'|trans}}</h3>
 		    </div>
 			<div class="row">
-				{{'label.maker'|trans}}: {{film.getMaker()}}
+				{{'Adresse'|trans}}: {{colocations.getAdresse()}}
 			</div>
 			<div class="row">
-				{{'label.made_at'|trans}}: {{film.getYear()}}
+				{{'Ville'|trans}}: {{colocations.getVille()}}
 			</div>
 			<div class="row" style="background-color: #DDDDDD">
 				<br> 
-				<p>{{'label.summary'|trans}}: {{film.getSummary()}}</p>
+				<p>{{'nbChambre'|trans}}: {{colocations.getnbChambre()}}</p>
 				<br>
-			</div>
-			{% set roles=film.getRoles() %}
-			<div class="row">
-		    	<h3>{{'title.roles_list'|trans}}</h3>
-		    </div>
-				<table class="table-striped">
-					
-					<tr>
-						<th> {{ 'label.name' |trans }}   </th>
-						<th> {{ 'label.actorName' |trans }}    </th>
-						<th> {{ 'label.actorFirstName' |trans }}    </th>
-					</tr>
-					{% for item in roles %}
-						<tr>
-							<td> {{item.getName()}}</td>
-							<td>{{item.getActorName()}}</td>
-							<td>{{item.getActorFirstName()}}</td>
-						</tr>
-					{% endfor %}
-					
-				</table>
-			
-    		
+			</div>	
 
 
 	</div>
 		
 		<div class="col-md-2">
-			<a href="../add/{{film.getId()}}" class="btn btn-block btn-success btn-sm">{{ 'action.edit_film'|trans }}</a>
-			<a href="../delete/{{film.getId()}}" class="btn btn-block btn-danger btn-sm">{{ 'action.delete_film'|trans }}</a>
+			<a href="../add/{{colocations.getId()}}" class="btn btn-block btn-success btn-sm">{{ 'action.edit_colocations'|trans }}</a>
+			<a href="../delete/{{colocations.getId()}}" class="btn btn-block btn-danger btn-sm">{{ 'action.delete_colocations'|trans }}</a>
 			<a href="../" class="btn btn-block btn-primary btn-sm">{{ 'action.cancel'|trans }}</a>
 		</div>
 	</div>
