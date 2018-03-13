@@ -25,9 +25,9 @@ function visibilite(Id)
 						<table class="table-stripped">
 					
 							<tr>
-								<th> {{ 'nbChambre ' |trans }}</th>
-								<th> {{ 'nbPers ' |trans }} </th> 
-								<th> {{ 'adresse ' |trans }} </th> 
+								<th> {{ 'nbChambre' |trans }}</th>
+								<th> {{ 'nbPers' |trans }} </th> 
+								<th> {{ 'adresse' |trans }} </th> 
 								<th></th>
 								<th></th>
 								<th></th>
@@ -38,14 +38,14 @@ function visibilite(Id)
 									<td>{{item.getNbPers()}}</td> 
 									<td>{{item.adresse()}}</td> 
 									<td> <a href="" class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
-									<td> <a href="edit/{{item.id}}" class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
+									<td> <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
 									<td> 
 									<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
 									<div id="{{item.getId()}}" style="display:none;">
 									
-									<h6>Voulez vous actualiser la date de passage ?</h3>
-									<a id= "cacher2" href="delete/{{item.getId()}}">Oui</a>
-									<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">Non<a/>
+									<h6>{{'Are you sure you want to delete'|trans}}</h3>
+									<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
+									<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}<a/>
 									
 									</div>
 									</td> 
