@@ -1,18 +1,24 @@
-sign_up: S'inscrire
-login: Se connecter
-action.cancel: Retour
-<<<<<<< HEAD
+sign_up: 'S''inscrire'
+login: 'Se connecter'
 colocations: Colocations
-=======
-colocations: colocations
->>>>>>> origin/develop
-nbChambre: Nombre de chambre
-nbPers: Nombre de Personnes
+nbChambre: 'Nombre de chambre'
+nbPers: 'Nombre de Personnes'
 adresse: Adresse
 show: Détail
 edit: Editer
 delete: Supprimer
-Ajout_coloc: Ajout colocation
-'Are you sure you want to delete': Etes-vous sure de vouloir supprimer cette annonce ?
+Ajout_coloc: 'Ajout colocation'
+'Are you sure you want to delete': 'Etes-vous sure de vouloir supprimer cette annonce ?'
 'Yes': Oui
 'No': Non
+logout: __logout
+action.cancel: __action.cancel
+label.maker: __label.maker
+label.made_at: __label.made_at
+label.summary: __label.summary
+title.roles_list: __title.roles_list
+label.name: __label.name
+label.actorName: __label.actorName
+label.actorFirstName: __label.actorFirstName
+action.edit_film: __action.edit_film
+action.delete_film: __action.delete_film
