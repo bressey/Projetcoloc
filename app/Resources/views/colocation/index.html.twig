@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div id="balise">
 <script>
 function visibilite(Id)
 			{
@@ -58,10 +59,16 @@ function visibilite(Id)
 		</div>
 	</div>
 	 <a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
+</div>
 {% endblock %}
 
 {% block stylesheets %}
 <style>
+#balise { background: white; font: 18px/1.5 sans-serif;
+			border-radius: 5px;
+			padding : 30px;
+			  margin-left: auto;
+  margin-right: auto;}
    body		/* Body correspond à toute la page */
 			{
 	

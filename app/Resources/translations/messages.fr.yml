@@ -1,17 +1,9 @@
-<<<<<<< HEAD
 sign_up: S'inscrire
 login: Se connecter
 action.cancel: Retour
 colocations: Colocations
 nbChambre: Nombre de chambre
 nbPers: Nombre de Personnes
-=======
-sign_up: 'S''inscrire'
-login: 'Se connecter'
-colocations: Colocations
-nbChambre: 'Nombre de chambre'
-nbPers: 'Nombre de Personnes'
->>>>>>> ce3b7d3d43fd24696c8e6d7b39556d70aec59c54
 adresse: Adresse
 show: Détail
 edit: Editer

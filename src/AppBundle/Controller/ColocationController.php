@@ -112,6 +112,42 @@
 			return $this->redirectToRoute('homepage');
 		}
 		
-
+		
+		/**
+		*@Route("colocation/recherche/{ville}",requirements={"ville": "\d+"}, name="RechColoc")
+		*/
+		 public function rechVille(Colocations $Coloc,Request $request)
+		{
+			if(!isset($_POST['Valider']))
+			{
+				$form = $this->createForm(ColocationsType::class,$Coloc);
+				$form->handleRequest($request);
+				if(!$form->isSubmitted() || !$form->isValid())
+				{
+					return $this->render('colocation/recherche.html.twig',['coloc'=>$Coloc, 'rech_coloc_form'=>$form->createView(),]);
+				}
+				$repository=$this->getDoctrine()->getRepository(Colocations::class);
+				$ville = $Coloc->getVille();
+				$find = $repository->find($ville);
+				dump($Coloc);
+				if( null != $find)
+				{
+					return $this->render('colocation/recherche.html.twig',['colocations'=>$Coloc,]);
+				}
+				else{
+					$form = $this->createForm(ColocationsType::class,$Coloc);
+					$form->handleRequest($request);
+					$em=$this->getDoctrine()->getManager();
+					$em->flush();
+					unset($_POST);
+					return $this->redirectToRoute('homepage');
+					
+				}
+			}
+		}
+		
+		
+			
+			
 	}
 	

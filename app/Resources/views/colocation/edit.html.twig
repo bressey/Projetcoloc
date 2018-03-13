@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div id="balise">
 	{% form_theme edit_coloc_form 'bootstrap_4_layout.html.twig' %}
     <div id="balise" class="container">
 		<div class="span10 offset1">
@@ -42,12 +43,12 @@
 		</br>
 
 	</div>
+</div>
 {% endblock %}
 
 {% block stylesheets %}
 <style>
-#balise { background: white; font: 18px/1.5 sans-serif;
-			border-radius: 5px;
-			padding : 30px;}
+
+
 </style>
 {% endblock %}
