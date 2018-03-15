@@ -36,79 +36,73 @@
 	</h5>
 {% endblock %}
 {% block body %}
-<div id="balise">
-<script>
-function visibilite(Id)
+	<div id="balise">
+		<script>
+			function visibilite(Id)
 			{
 				var targetElement;
 				targetElement = document.getElementById(Id) ;
 				if (targetElement.style.display == "none")
-					{
-						targetElement.style.display = "" ;
-					} else {
-						targetElement.style.display = "none" ;
-					}
+				{
+					targetElement.style.display = "" ;
+				} else {
+					targetElement.style.display = "none" ;
+				}
 			}
 		</script>
 	
 		
 						
 				
-    <div class="container">
-		<div class="row">
-			<div class="col-md-9">
-				<div class="panel panel-success">
-					
-					<h1> {{ 'colocations'|trans }} </h1>
-					
-					<div class="table-responsive-md" style="text-align: center">
-						<table class="table-stripped">
-					
-							<tr>
-								<th> {{ 'nbChambre' |trans }}</th>
-								<th> {{ 'nbPers' |trans }} </th> 
-								<th> {{ 'adresse' |trans }} </th> 
-								<th></th>
-								<th></th>
-								<th></th>
-							</tr>
-							{% for item in colocations %}
-								<tr>
-									<td> {{item.getNbChambre()}}</td>
-									<td>{{item.getNbPers()}}</td> 
-									<td>{{item.adresse()}}</td> 
-									<td> <a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
-									<td> <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
-									<td> 
-									<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
-									<div id="{{item.getId()}}" style="display:none;">
-									
-									<h6>{{'Are you sure you want to delete'|trans}}</h3>
-									<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
-									<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}<a/>
-									
-									</div>
-									</td> 
-								</tr>
-							{% endfor %}
-						</table>
-					</div>
-				</div>
+		<div class="panel panel-success">
+			
+			<h1> {{ 'colocations'|trans }} </h1>
+			
+			<div class="table-responsive-md" style="text-align: center">
+				<table class="table-stripped">
+			
+					<tr>
+						<th> {{ 'nbChambre' |trans }}</th>
+						<th> {{ 'nbPers' |trans }} </th> 
+						<th> {{ 'adresse' |trans }} </th> 
+						<th></th>
+						<th></th>
+						<th></th>
+					</tr>
+					{% for item in colocations %}
+						<tr>
+							<td> {{item.getNbChambre()}}</td>
+							<td>{{item.getNbPers()}}</td> 
+							<td>{{item.adresse()}}</td> 
+							<td> <a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
+							<td> <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
+							<td> 
+							<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
+							<div id="{{item.getId()}}" style="display:none;">
+							
+							<h6>{{'Are you sure you want to delete'|trans}}</h3>
+							<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
+							<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}<a/>
+							
+							</div>
+							</td> 
+						</tr>
+					{% endfor %}
+				</table>
 			</div>
 		</div>
+		<a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
 	</div>
-	 <a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
-</div>
 {% endblock %}
 
 {% block stylesheets %}
 <style>
-#balise{ background: white; font: 18px/1.5 sans-serif;
+	#balise{ background: white; font: 18px/1.5 sans-serif;
 				border-radius: 5px;
 				padding : 30px;
 				margin-left: auto;
 				margin-right: auto;}
-			#coteG {
+	#coteG {
 				background: white; font: 18px/1.5 sans-serif;
 				border-radius: 5px;
 				padding : 30px;

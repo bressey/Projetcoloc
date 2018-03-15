@@ -63,17 +63,22 @@
                 </ul>
             </div>
         </nav>
-		<div id="balise" class="col-sm-2" style="margin-left: 1%;">
-		{% block coteG %}
 		
-		{% endblock %}
 		
+<<<<<<< HEAD
 		</div>
 		
+=======
 		
-        <div class="container">
-            <div class="row">
+		<div id="balise" class="col-md-2" style="margin-left:1%" >
+			{% block coteG %}
+		
+			{% endblock %}	
+>>>>>>> amélioration des vues pour responsivité
+		
+		</div>
 			
+<<<<<<< HEAD
                 <div class="col-sm-8">
 					{% if app.request.hasPreviousSession %}
 						{% for type, messages in app.session.flashbag.all() %}
@@ -98,16 +103,38 @@
 		{% endblock %}
 		</div>
             <div class="row">
+=======
+        <div class="col-md-7">
+			{% if app.request.hasPreviousSession %}
+				{% for type, messages in app.session.flashbag.all() %}
+					{% for message in messages %}
+						<li> <div class="flash-{{ type }}">
+						{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			{% endif %}
+			
+			{% block body %}
+				
+
+			{% endblock %}
+		</div>
+>>>>>>> amélioration des vues pour responsivité
 		
-                <div class="col-sm-12 footer">
-                    {% block footer %}
-                    <p>Copyright (c) 2018 L3 Miage - Université de Nantes </p>
-                    {% endblock %}
+		<div id="balise" class="col-md-2"  >
+			{% block coteD %}
 
-                </div>
-            </div>
-        </div>
+			{% endblock %}
+		</div>
+			
+        <div class="col-sm-12 footer">
+            {% block footer %}
+				<p>Copyright (c) 2018 L3 Miage - Université de Nantes </p>
+			{% endblock %}
 
+		</div>
+        
         {% block javascripts %}
             <!-- jQuery library -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
