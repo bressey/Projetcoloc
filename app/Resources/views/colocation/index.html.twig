@@ -1,5 +1,40 @@
 {% extends 'base.html.twig' %}
 
+{% block coteG %}
+	<h4>Affiner la recherche</h4>
+	<h5>Par type</h5>
+	<form method="POST" name="colocation" class="form-horizontal" action="">
+		<select id="type">
+			  <option value="NULL" selected>...</option> 
+			  <option value="T1" >T1</option> 
+			  <option value="T2">T2</option>
+			  <option value="T3">T3</option>
+			  <option value="T4">T4</option>
+			  <option value="T5">T5</option>
+			  <option value="T6">T6 et +</option>
+			  
+		</select><br>
+		<h5>Par nombre de personne</h5>
+		<select id="nbPers">
+			  <option value="NULL" selected>...</option> 
+			  <option value="2">2</option> 
+			  <option value="3">3</option>
+			  <option value="4">4</option>
+			  <option value="5">5</option>
+			  <option value="6">6 et +</option>
+			 
+			  
+		</select><br>
+		<input type="submit" name="Valider" value="Valider" class="btn btn-success"/>
+		<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
+	</form>
+
+	
+{% endblock %}				
+{% block coteD %}	
+	<h4>A changer</h4>
+	</h5>
+{% endblock %}
 {% block body %}
 <div id="balise">
 <script>
@@ -15,6 +50,10 @@ function visibilite(Id)
 					}
 			}
 		</script>
+	
+		
+						
+				
     <div class="container">
 		<div class="row">
 			<div class="col-md-9">
@@ -64,11 +103,18 @@ function visibilite(Id)
 
 {% block stylesheets %}
 <style>
-#balise { background: white; font: 18px/1.5 sans-serif;
-			border-radius: 5px;
-			padding : 30px;
-			  margin-left: auto;
-  margin-right: auto;}
+#balise{ background: white; font: 18px/1.5 sans-serif;
+				border-radius: 5px;
+				padding : 30px;
+				margin-left: auto;
+				margin-right: auto;}
+			#coteG {
+				background: white; font: 18px/1.5 sans-serif;
+				border-radius: 5px;
+				padding : 30px;
+				float: left;
+
+			}
    body		/* Body correspond à toute la page */
 			{
 	

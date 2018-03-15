@@ -18,18 +18,7 @@
                 color: white;
                 text-align: center;
             }
-			#balise{ background: white; font: 18px/1.5 sans-serif;
-				border-radius: 5px;
-				padding : 30px;
-				margin-left: auto;
-				margin-right: auto;}
-			#coteG {
-				background: white; font: 18px/1.5 sans-serif;
-				border-radius: 5px;
-				padding : 30px;
-				float: left;
-
-			}
+			
 			body		/* Body correspond à toute la page */
 			{
 	
@@ -52,6 +41,8 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href={{ path('homepage') }}>Coloc +</a>
                 </div>
+				
+				
 
                 <ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -72,28 +63,18 @@
                 </ul>
             </div>
         </nav>
-
 		<div id="balise" class="col-sm-2" style="margin-left: 1%;">
-						<h4>Affiner la recherche</h4>
-						<h5>Par type</h5>
-						<form method="POST" name="colocation" class="form-horizontal" action="">
-	
-						<div class="control-group">
-							{{form_label(rech_coloc_form.ville)}}
-							{{form_errors(rech_coloc_form.ville)}}
-							{{form_widget(rech_coloc_form.ville)}}
-						</div>
-						<input type="submit" name="Valider" value="Valider" class="btn btn-success"/>
-						<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
-						
-						<h5>Par nombre de personne</h5>
-					
-					</div>
+		{% block coteG %}
+		
+		{% endblock %}
+		
+		</div>
 		<div id="balise" class="col-sm-2" style="float:right; margin-right: 1%;" >
-						<h4>A changer</h4>
-						</h5>
-					
-					</div>
+		{% block coteD %}
+		
+		{% endblock %}
+		</div>
+		
         <div class="container">
             <div class="row">
 			

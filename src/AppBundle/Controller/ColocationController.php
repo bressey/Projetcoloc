@@ -120,14 +120,10 @@
 		{
 			if(!isset($_POST['Valider']))
 			{
-				$form = $this->createForm(ColocationsType::class,$Coloc);
-				$form->handleRequest($request);
-				if(!$form->isSubmitted() || !$form->isValid())
-				{
-					return $this->render('colocation/recherche.html.twig',['coloc'=>$Coloc, 'rech_coloc_form'=>$form->createView(),]);
-				}
-				$repository=$this->getDoctrine()->getRepository(Colocations::class);
-				$ville = $Coloc->getVille();
+				
+				return $this->render('colocation/recherche.html.twig',['coloc'=>$Coloc, 'rech_coloc_form'=>$form->createView(),]);
+				
+				
 				$find = $repository->find($ville);
 				dump($Coloc);
 				if( null != $find)
@@ -144,6 +140,8 @@
 					
 				}
 			}
+			$repository=$this->getDoctrine()->getRepository(Colocations::class);
+			$Coloc= $repository->findAll();
 		}
 		
 		
