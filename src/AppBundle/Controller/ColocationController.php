@@ -28,11 +28,14 @@
 		*/
 		public function indexAction(Request $request)
 		{
-			$repository=$this->getDoctrine()->getRepository(Colocations::class);
-			$Coloc=$repository->findAll();
-			dump($Coloc);
-			
-		    return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+			if(!isset($_POST['recherche']))
+			{
+				$repository=$this->getDoctrine()->getRepository(Colocations::class);
+				$Coloc=$repository->findAll();
+				dump($Coloc);
+				
+				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+			}
 		}
 		
 		
@@ -118,7 +121,7 @@
 		*/
 		 public function rechVille(Colocations $Coloc,Request $request)
 		{
-			if(!isset($_POST['Valider']))
+			if(isset($_POST['recherche']))
 			{
 				
 				return $this->render('colocation/recherche.html.twig',['coloc'=>$Coloc, 'rech_coloc_form'=>$form->createView(),]);

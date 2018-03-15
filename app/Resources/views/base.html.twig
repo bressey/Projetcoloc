@@ -69,16 +69,12 @@
 		{% endblock %}
 		
 		</div>
-		<div id="balise" class="col-sm-2" style="float:right; margin-right: 1%;" >
-		{% block coteD %}
 		
-		{% endblock %}
-		</div>
 		
         <div class="container">
             <div class="row">
 			
-                <div class="col-sm-10">
+                <div class="col-sm-8">
 					{% if app.request.hasPreviousSession %}
 						{% for type, messages in app.session.flashbag.all() %}
 							{% for message in messages %}
@@ -96,7 +92,11 @@
                 </div>
             </div>
 
-			
+			<div id="balise" class="col-sm-2" >
+		{% block coteD %}
+		
+		{% endblock %}
+		</div>
             <div class="row">
 		
                 <div class="col-sm-12 footer">
