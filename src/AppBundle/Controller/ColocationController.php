@@ -35,6 +35,44 @@
 				dump($Coloc);
 				
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+			}else
+			{
+				$repository = $this->getDoctrine()
+                   ->getManager()
+                   ->getRepository(Colocations::class);
+				   
+				
+				$Coloc_pers=$repository->findAll();
+				$Coloc = array();
+				foreach($Coloc_pers as $c){
+					if(($_POST['nbPers']!= "NULL") AND $_POST['nbPers']==$c->getNbPers()){
+						if(!empty ($_POST['type']) AND ($_POST['type']==$c->getType())){
+							$Coloc[]=$c;
+						}
+					
+					}
+					if(($_POST['nbPers']== "NULL")){
+						if(!empty ($_POST['type']) AND ($_POST['type']==$c->getType())){
+							$Coloc[]=$c;
+						}
+					
+					}
+					
+					if(($_POST['type'] == "NULL")){
+						if(($_POST['nbPers']!= "NULL") AND $_POST['nbPers']==$c->getNbPers()){
+							$Coloc[]=$c;
+						}
+					
+					}
+					if(($_POST['type'] == "NULL") AND ($_POST['nbPers']== "NULL")){
+						$Coloc[]=$c;
+					}
+				}
+				dump($Coloc);
+				
+				
+				
+				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
 			}
 		}
 		
@@ -116,36 +154,7 @@
 		}
 		
 		
-		/**
-		*@Route("colocation/recherche/{ville}",requirements={"ville": "\d+"}, name="RechColoc")
-		*/
-		 public function rechVille(Colocations $Coloc,Request $request)
-		{
-			if(isset($_POST['recherche']))
-			{
-				
-				return $this->render('colocation/recherche.html.twig',['coloc'=>$Coloc, 'rech_coloc_form'=>$form->createView(),]);
-				
-				
-				$find = $repository->find($ville);
-				dump($Coloc);
-				if( null != $find)
-				{
-					return $this->render('colocation/recherche.html.twig',['colocations'=>$Coloc,]);
-				}
-				else{
-					$form = $this->createForm(ColocationsType::class,$Coloc);
-					$form->handleRequest($request);
-					$em=$this->getDoctrine()->getManager();
-					$em->flush();
-					unset($_POST);
-					return $this->redirectToRoute('homepage');
-					
-				}
-			}
-			$repository=$this->getDoctrine()->getRepository(Colocations::class);
-			$Coloc= $repository->findAll();
-		}
+		
 		
 		
 			
