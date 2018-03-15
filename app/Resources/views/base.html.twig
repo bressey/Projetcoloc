@@ -18,11 +18,22 @@
                 color: white;
                 text-align: center;
             }
-			
+			#balise{ background: white; font: 18px/1.5 sans-serif;
+				border-radius: 5px;
+				padding : 30px;
+				margin-left: auto;
+				margin-right: auto;}
+			#coteG {
+				background: white; font: 18px/1.5 sans-serif;
+				border-radius: 5px;
+				padding : 30px;
+				float: left;
+
+			}
 			body		/* Body correspond à toute la page */
 			{
 	
-				background-image: url({{ asset('ville.jpg')}});
+				background-image: url( {{asset('ville.jpg')}} );
 				
 				background-size : 100%;		/*On affiche l'arrière plan à 100%*/
 				background-attachment:fixed;	/*On fixe l'arrière plan*/
@@ -30,6 +41,29 @@
 				
 				font-family:Verdana;
 				
+			}
+			h1, h2 { line-height: 1.2; margin: 0 0 .5em; }
+			h1 { font-size: 36px; }
+			h2 { font-size: 21px; margin-bottom: 1em; }
+			p { margin: 0 0 1em 0; }
+			a { color: #0000F0; }
+			a:hover { text-decoration: none; }
+			code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break-word; }
+			#wrapper { background: #FFF; margin: 1em auto; max-width: 800px; width: 95%; }
+			#container { padding: 2em; }
+			#welcome, #status { margin-bottom: 2em; }
+			#welcome h1 span { display: block; font-size: 75%; }
+			#icon-status, #icon-book { float: left; height: 64px; margin-right: 1em; margin-top: -4px; width: 64px; }
+			#icon-book { display: none; }
+
+			@media (min-width: 768px) {
+				#wrapper { width: 80%; margin: 2em auto; }
+				#icon-book { display: inline-block; }
+				#status a, #next a { display: block; }
+
+				@-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+				@keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+				.sf-toolbar { opacity: 0; -webkit-animation: fade-in 1s .2s forwards; animation: fade-in 1s .2s forwards;}
 			}
 
         </style>
@@ -65,45 +99,13 @@
         </nav>
 		
 		
-<<<<<<< HEAD
-		</div>
-		
-=======
-		
 		<div id="balise" class="col-md-2" style="margin-left:1%" >
 			{% block coteG %}
 		
 			{% endblock %}	
->>>>>>> amélioration des vues pour responsivité
 		
 		</div>
-			
-<<<<<<< HEAD
-                <div class="col-sm-8">
-					{% if app.request.hasPreviousSession %}
-						{% for type, messages in app.session.flashbag.all() %}
-							{% for message in messages %}
-								<li> <div class="flash-{{ type }}">
-								{{ message }}
-								</div>
-							{% endfor %}
-						{% endfor %}
-					{% endif %}
-					
-                    {% block body %}
-                        
 
-                    {% endblock %}
-                </div>
-            </div>
-
-			<div id="balise" class="col-sm-2" >
-		{% block coteD %}
-		
-		{% endblock %}
-		</div>
-            <div class="row">
-=======
         <div class="col-md-7">
 			{% if app.request.hasPreviousSession %}
 				{% for type, messages in app.session.flashbag.all() %}
@@ -120,7 +122,6 @@
 
 			{% endblock %}
 		</div>
->>>>>>> amélioration des vues pour responsivité
 		
 		<div id="balise" class="col-md-2"  >
 			{% block coteD %}
