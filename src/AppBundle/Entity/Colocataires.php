@@ -48,36 +48,6 @@ class Colocataires extends BaseUser
     private $sexe;
 
     /**
-     * @var int
-     *
-     * @ORM\Column(name="Compte", type="integer")
-     */
-    private $compte;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="Id_coloc", type="integer")
-     */
-    private $idColoc;
-	
-	/**
-	* @var string
-	*
-	* @ORM\Column(name="Email", type="string")
-	*/
-	private $Email;
-	
-	/**
-	* @var string
-	*
-	* @ORM\Column(name="Password", type="string")
-	*/
-	private $Password;
-	
-
-
-    /**
      * Get id
      *
      * @return int
@@ -87,29 +57,7 @@ class Colocataires extends BaseUser
         return $this->id;
     }
 	
-	/**
-     * Set Password
-     *
-     * @param string $password
-     *
-     * @return Colocataires
-     */
-    public function setPassword($password)
-    {
-        $this->Password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get Password
-     *
-     * @return string
-     */
-    public function getPassword()
-    {
-        return $this->Password;
-    }
+	
 
     /**
      * Set nom
@@ -183,76 +131,5 @@ class Colocataires extends BaseUser
         return $this->sexe;
     }
 
-    /**
-     * Set compte
-     *
-     * @param integer $compte
-     *
-     * @return Colocataires
-     */
-    public function setCompte($compte)
-    {
-        $this->compte = $compte;
-
-        return $this;
-    }
-
-    /**
-     * Get compte
-     *
-     * @return int
-     */
-    public function getCompte()
-    {
-        return $this->compte;
-    }
-
-    /**
-     * Set idColoc
-     *
-     * @param integer $idColoc
-     *
-     * @return Colocataires
-     */
-    public function setIdColoc($idColoc)
-    {
-        $this->idColoc = $idColoc;
-
-        return $this;
-    }
-
-    /**
-     * Get idColoc
-     *
-     * @return int
-     */
-    public function getIdColoc()
-    {
-        return $this->idColoc;
-    }
-
-    /**
-     * Set Email
-     *
-     * @param string $Email
-     *
-     * @return Colocataires
-     */
-    public function setEmail($Email)
-    {
-        $this->Email = $Email;
-
-        return $this;
-    }
-
-    /**
-     * Get Email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->Email;
-    }
 }
 

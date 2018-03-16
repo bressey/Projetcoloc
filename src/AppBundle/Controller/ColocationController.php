@@ -129,7 +129,6 @@
 				if($c->getPrix() <= $prixMax AND $c->getPrix() >= $prixMin){
 					 $price[]= $c;
 				}
-				
 			}
 			return $price;
 		}

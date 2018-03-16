@@ -248,7 +248,5 @@ class Colocations
 
         return $this;
     }
-	
-
 }
 
