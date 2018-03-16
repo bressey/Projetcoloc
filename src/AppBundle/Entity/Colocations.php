@@ -20,6 +20,13 @@ class Colocations
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+	
+	/**
+     * @var int
+     *
+     * @ORM\Column(name="id_admin", type="integer")
+     */
+    private $id_admin;
 
 
     /**
@@ -57,7 +64,12 @@ class Colocations
      */
     private $type;
 	
-
+	/**
+     * @var int
+     *
+     * @ORM\Column(name="Prix", type="integer")
+     */
+    private $prix;
 
     /**
      * Get id
@@ -67,6 +79,28 @@ class Colocations
     public function getId()
     {
         return $this->id;
+    }
+	
+	/**
+     * Get id_admin
+     *
+     * @return int
+     */
+    public function getIdAdmin()
+    {
+        return $this->id_admin;
+    }
+	
+	/**
+     * Set id_admin
+     *
+     * @return int
+     */
+    public function setIdAdmin($id_admin)
+    {
+		$this->id_admin = $id_admin;
+		
+        return $this->id_admin;
     }
 
 
@@ -189,6 +223,30 @@ class Colocations
     public function getType()
     {
         return $this->type;
+    }
+	
+	 /**
+     * Get prix
+     *
+     * @return int
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
+	
+	/**
+     * Set prix
+     *
+     * @param integer $nbChambre
+     *
+     * @return int
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
     }
 }
 

@@ -2,6 +2,7 @@
 
 namespace AppBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -13,7 +14,16 @@ class ColocationsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('adresse')->add('ville')->add('nbPers')->add('nbChambre')->add('type');
+		
+        $builder->add('id_admin')->add('adresse')->add('ville')->add('nbPers')->add('nbChambre')->add('type', ChoiceType::class, array(
+		'choices'  => array(
+        '...' => "NULL",
+        'T1' => "T1",
+        'T2' => "T2",
+		'T3' => "T3",
+		'T4' => "T4",
+		'T5' => "T5",
+		'T6 et +' => "T6 et +")))->add('prix');
     }/**
      * {@inheritdoc}
      */

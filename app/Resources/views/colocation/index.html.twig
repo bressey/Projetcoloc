@@ -2,8 +2,12 @@
 
 {% block coteG %}
 	<h4>Affiner la recherche</h4>
-	<h5>Par type</h5>
+
 	<form method="POST" name="colocation" class="form-horizontal" action="">
+		<h5>Par Ville</h5>
+		<input type="text" name='ville' />
+	
+		<h5>Par Type</h5>
 		<select name="type">
 			  <option value="NULL" selected>...</option> 
 			  <option value="T1" >T1</option> 
@@ -22,8 +26,7 @@
 			  <option>4</option>
 			  <option>5</option>
 			  <option>6 et +</option>
-			 
-			  
+  
 		</select><br>
 		<input type="submit" name="recherche" value="Valider" class="btn btn-success"/>
 		<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>

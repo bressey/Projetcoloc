@@ -41,38 +41,39 @@
                    ->getManager()
                    ->getRepository(Colocations::class);
 				   
-				
-				$Coloc_pers=$repository->findAll();
-				$Coloc = array();
-				foreach($Coloc_pers as $c){
-					if(($_POST['nbPers']!= "NULL") AND $_POST['nbPers']==$c->getNbPers()){
-						if(!empty ($_POST['type']) AND ($_POST['type']==$c->getType())){
-							$Coloc[]=$c;
+				if(!empty($_POST['ville'])){
+					if(( $_POST['nbPers'])!="NULL"){
+						if(($_POST['type'])!="NULL"){
+							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
 						}
-					
-					}
-					if(($_POST['nbPers']== "NULL")){
-						if(!empty ($_POST['type']) AND ($_POST['type']==$c->getType())){
-							$Coloc[]=$c;
+						else{
+							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
 						}
-					
 					}
-					
-					if(($_POST['type'] == "NULL")){
-						if(($_POST['nbPers']!= "NULL") AND $_POST['nbPers']==$c->getNbPers()){
-							$Coloc[]=$c;
+					else{
+						if(($_POST['type'])!="NULL"){
+							$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+						}else{
+							$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville']  ] );
 						}
-					
 					}
-					if(($_POST['type'] == "NULL") AND ($_POST['nbPers']== "NULL")){
-						$Coloc[]=$c;
+				}else{
+					if(( $_POST['nbPers'])!="NULL"){
+						if(($_POST['type'])!="NULL"){
+							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+						}
+						else{
+							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
+						}
+					}
+					else{
+						if(($_POST['type'])!="NULL"){
+							$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type']] );
+						}
 					}
 				}
-				dump($Coloc);
 				
-				
-				
-				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc_pers]);
 			}
 		}
 		
