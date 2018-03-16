@@ -40,41 +40,98 @@
 				$repository = $this->getDoctrine()
                    ->getManager()
                    ->getRepository(Colocations::class);
-				   
-				if(!empty($_POST['ville'])){
-					if(( $_POST['nbPers'])!="NULL"){
-						if(($_POST['type'])!="NULL"){
-							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+				if(( $_POST['prix'])=="NULL"){ 
+					if(!empty($_POST['ville'])){
+						if(( $_POST['nbPers'])!="NULL"){
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+							}
+							else{
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
+							}
 						}
 						else{
-							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+							}else{
+								$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville']  ] );
+							}
 						}
-					}
-					else{
-						if(($_POST['type'])!="NULL"){
-							$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
-						}else{
-							$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville']  ] );
+					}else{
+						if(( $_POST['nbPers'])!="NULL"){
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+							}
+							else{
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
+							}
+						}
+						else{
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type']] );
+							}
 						}
 					}
 				}else{
-					if(( $_POST['nbPers'])!="NULL"){
-						if(($_POST['type'])!="NULL"){
-							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+					if(!empty($_POST['ville'])){
+						if(( $_POST['nbPers'])!="NULL"){
+								if(($_POST['type'])!="NULL"){
+									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								}
+								else{
+									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								}
+							}else{
+								if(($_POST['type'])!="NULL"){
+									$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']] );
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								}else{
+									$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville'] ] );
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								}
+							}
+					}else{
+						if(( $_POST['nbPers'])!="NULL"){
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+							}
+							else{
+								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+							}
 						}
 						else{
-							$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
-						}
-					}
-					else{
-						if(($_POST['type'])!="NULL"){
-							$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type']] );
+							if(($_POST['type'])!="NULL"){
+								$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type']] );
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+							}else{
+								$Coloc_pers = $repository->findAll();
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+
+							}
 						}
 					}
 				}
+			
 				
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc_pers]);
 			}
+		}
+		
+		
+		function prixInf(Array $Coloc, String $prix)
+		{
+			$price = Array();
+			foreach($Coloc as $c){
+				if($c->getPrix() <= $prix AND $c->getPrix() >= $prix-150){
+					 $price[]= $c;
+				}
+				
+			}
+			return $price;
 		}
 		
 		
