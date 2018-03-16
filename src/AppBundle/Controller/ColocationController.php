@@ -77,39 +77,39 @@
 						if(( $_POST['nbPers'])!="NULL"){
 								if(($_POST['type'])!="NULL"){
 									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
-									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 								}
 								else{
 									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
-									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 								}
 							}else{
 								if(($_POST['type'])!="NULL"){
 									$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']] );
-									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 								}else{
 									$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville'] ] );
-									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+									$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 								}
 							}
 					}else{
 						if(( $_POST['nbPers'])!="NULL"){
 							if(($_POST['type'])!="NULL"){
 								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
-								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 							}
 							else{
 								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
-								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 							}
 						}
 						else{
 							if(($_POST['type'])!="NULL"){
 								$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type']] );
-								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 							}else{
 								$Coloc_pers = $repository->findAll();
-								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prix']);
+								$Coloc_pers = $this->prixInf($Coloc_pers, $_POST['prixMax'], $_POST['prixMin']);
 
 							}
 						}
@@ -122,11 +122,11 @@
 		}
 		
 		
-		function prixInf(Array $Coloc, String $prix)
+		function prixInf(Array $Coloc, String $prixMax, String $prixMin)
 		{
 			$price = Array();
 			foreach($Coloc as $c){
-				if($c->getPrix() <= $prix AND $c->getPrix() >= $prix-150){
+				if($c->getPrix() <= $prixMax AND $c->getPrix() >= $prixMin){
 					 $price[]= $c;
 				}
 				
