@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-         <meta charset="UTF-8" />
+        <meta charset="UTF-8" />
         <title>{% block title %}Coloc + {% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <!-- <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /> -->
         <!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> 
         <link rel="stylesheet" href={{ asset('CSS.css') }}>
- 
-        <style>
-            
 
-        </style>
     </head>
     <body>
 		
@@ -41,19 +37,21 @@
         </nav>
 		
 		
-		<div id="balise" class="col-md-2" style="margin-left:1%;" >
-			{% block coteG %}
-			{% endblock %}
-		</div>
+			<div class="col-md-2">
+				<div id="balise">
+					{% block coteG %}
+					{% endblock %}
+				</div>
+			</div>
 
-        <div id="balise" class="col-md-9" style="margin-left:1%;">		
-			{% block body %}
+			<div id="balise" class="col-md-10">
 				
-
-			{% endblock %}
-		</div>
+					{% block body %}
+					{% endblock %}
+				
+			</div>
+			
 		
-
 		
         <div class="col-sm-12 footer">
             {% block footer %}
