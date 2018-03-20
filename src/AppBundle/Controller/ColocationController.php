@@ -33,9 +33,10 @@
 				$repository=$this->getDoctrine()->getRepository(Colocations::class);
 				$Coloc=$repository->findAll();
 				dump($Coloc);
-				
+
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
-			}else
+			}
+			else
 			{
 				$repository = $this->getDoctrine()
                    ->getManager()
@@ -54,7 +55,7 @@
 							if(($_POST['type'])!="NULL"){
 								$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
 							}else{
-								$Coloc_pers = $repository->findBy( ['ville' =>$_POST['ville']  ] );
+								$Coloc_pers = $repository->findBy( [ 'ville' =>$_POST['ville']  ] );
 							}
 						}
 					}else{
@@ -132,7 +133,7 @@
 					}
 				}
 			
-				
+				dump($Coloc_pers);
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc_pers]);
 			}
 		}
