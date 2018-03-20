@@ -144,18 +144,19 @@
 			$price = Array();
 			foreach($Coloc as $c){
 				if($prixMax > $prixMin){
-					if($c->getPrix() >= $prixMin){
+					if($c->getPrix() <= $prixMax AND $c->getPrix() >= $prixMin){
 						 $price[]= $c;
 					}
+					
 				}else{
 					if($prixMax == $prixMin){
-						if($c->getPrix() == $prixMax){
+						if($c->getPrix() == $prixMax OR $prixMin == 0){
 							 $price[]= $c;
 						}
 					
 					}else{
-						if($c->getPrix() <= $prixMax AND $c->getPrix() >= $prixMin){
-							 $price[]= $c;
+						if($c->getPrix() >= $prixMin){
+							$price[]= $c;
 						}
 					}
 				}
