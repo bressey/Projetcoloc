@@ -17,7 +17,7 @@
 	
 	
 	/**
-	* @Route("/{_locale}/Colocation")
+	* @Route("/{_locale}")
 	*/
 	class ColocationController extends Controller
 	{	
@@ -239,12 +239,7 @@
 			
 			return $this->redirectToRoute('homepage');
 		}
-		
-		
-		
-		
-		
-			
+	
 			
 	}
 	

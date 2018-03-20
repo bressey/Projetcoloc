@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends "@FOSUser/layout.html.twig" %}
 
 {% block coteG %}
 	<h4>Affiner la recherche</h4>
@@ -7,10 +7,10 @@
 	<form method="POST" name="colocation" class="form-horizontal" action="">
 
 		<h5>Par Ville</h5>
-		<input type="text" name='ville' />
+		<input class="form-control" type="text" name='ville' />
 	
 		<h5>Par Type</h5>
-		<select name="type">
+		<select class="form-control" name="type">
 			  <option value="NULL" selected>...</option> 
 			  <option value="T1" >T1</option> 
 			  <option value="T2">T2</option>
@@ -21,7 +21,7 @@
 			  
 		</select><br>
 		<h5>Par nombre de personne</h5>
-		<select name="nbPers">
+		<select class="form-control" name="nbPers">
 			  <option value="NULL" selected>...</option> 
 			  <option>2</option> 
 			  <option>3</option>
@@ -32,7 +32,7 @@
 		</select><br>
 		<h5>Par Prix</h5>
 		
-		<select name="prixMin">
+		<select class="form-control"  name="prixMin">
 			  <option value="0" selected>Prix Min</option> 
 			   <option value="0" >0</option> 
 			  <option value="100" >100</option> 
@@ -47,7 +47,7 @@
 			  <option value="1000">1000 et +</option>
 			  
 		</select>
-		<select name="prixMax">
+		<select  class="form-control" name="prixMax">
 			  <option value="0" selected>Prix Max</option> 
 			   <option value="0" >0</option> 
 			  <option value="100" >100</option> 
@@ -94,36 +94,26 @@
 			<h1> {{ 'colocations'|trans }} </h1>
 			
 			<div class="table-responsive-md" style="text-align: center">
-				<table class="table-stripped">
-			
-					<tr>
-						<th> {{ 'nbChambre' |trans }}</th>
-						<th> {{ 'nbPers' |trans }} </th> 
-						<th> {{ 'adresse' |trans }} </th> 
-						<th></th>
-						<th></th>
-						<th></th>
-					</tr>
-					{% for item in colocations %}
-						<tr>
-							<td> {{item.getNbChambre()}}</td>
-							<td>{{item.getNbPers()}}</td> 
-							<td>{{item.adresse()}}</td> 
-							<td> <a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a></td> 
-							<td> <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a></td> 
-							<td> 
-							<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
-							<div id="{{item.getId()}}" style="display:none;">
-							
-							<h6>{{'Are you sure you want to delete'|trans}}</h3>
-							<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
-							<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}<a/>
-							
-							</div>
-							</td> 
-						</tr>
-					{% endfor %}
-				</table>
+				{% for item in colocations %}
+					<label>{{ 'nbChambre : ' |trans }}</label>{{item.getNbChambre()}} <br>
+					<label>{{ 'nbPers : ' |trans }}</label>{{item.getNbPers()}}<br>
+					<label>{{ 'adresse : ' |trans }}</label>{{item.adresse()}}<br>
+					<label>{{ 'Prix : ' |trans }}</label>{{item.prix()}} <br>
+					
+						
+					<a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
+					<a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a> 
+					 
+					<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
+					<div id="{{item.getId()}}" style="display:none;">
+					
+						<h6>{{'Are you sure you want to delete'|trans}}</h6>
+						<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
+						<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}</a>
+						
+					</div>
+					<br>
+				{% endfor %}	
 			</div>
 		<a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
 	</div>

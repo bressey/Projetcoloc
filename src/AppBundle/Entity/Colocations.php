@@ -4,13 +4,14 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Colocations
  *
  * @ORM\Table(name="colocations")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ColocationsRepository")
  */
-class Colocations
+class Colocations 
 {
     /**
      * @var int
@@ -19,15 +20,8 @@ class Colocations
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 	
-	/**
-     * @var int
-     *
-     * @ORM\Column(name="id_admin", type="integer")
-     */
-    private $id_admin;
-
 
     /**
      * @var string
@@ -70,8 +64,10 @@ class Colocations
      * @ORM\Column(name="Prix", type="integer")
      */
     private $prix;
+	
 
-    /**
+	
+	 /**
      * Get id
      *
      * @return int
@@ -80,30 +76,6 @@ class Colocations
     {
         return $this->id;
     }
-	
-	/**
-     * Get id_admin
-     *
-     * @return int
-     */
-    public function getIdAdmin()
-    {
-        return $this->id_admin;
-    }
-	
-	/**
-     * Set id_admin
-     *
-     * @return int
-     */
-    public function setIdAdmin($id_admin)
-    {
-		$this->id_admin = $id_admin;
-		
-        return $this->id_admin;
-    }
-
-
 
     /**
      * Set adresse
@@ -248,5 +220,6 @@ class Colocations
 
         return $this;
     }
+	
 }
 

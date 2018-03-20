@@ -34,12 +34,8 @@
 						</ul>
 					</li>
 					<li><a href={{ path('fos_user_registration_register') }}><span class="glyphicon glyphicon-user"></span> {{ 'sign_up'|trans }}</a></li>
-					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-						{{ 'logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-						<li><a href="{{ path('fos_user_security_logout') }}">{{ 'logout'|trans }}</a></li>
-					{% else %}
-						<li><a href={{ path('fos_user_security_login') }}><span class="glyphicon glyphicon-log-in"></span> {{ 'login'|trans }}</a></li>
-					{% endif %}
+					{% block head %}
+					{% endblock %}
                 </ul>
             </div>
         </nav>
@@ -47,22 +43,10 @@
 		
 		<div id="balise" class="col-md-2" style="margin-left:1%" >
 			{% block coteG %}
-		
-			{% endblock %}	
-		
+			{% endblock %}
 		</div>
 
-        <div class="col-md-7">
-			{% if app.request.hasPreviousSession %}
-				{% for type, messages in app.session.flashbag.all() %}
-					{% for message in messages %}
-						<li> <div class="flash-{{ type }}">
-						{{ message }}
-						</div>
-					{% endfor %}
-				{% endfor %}
-			{% endif %}
-			
+        <div class="col-md-7">		
 			{% block body %}
 				
 

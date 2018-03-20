@@ -13,7 +13,7 @@ class ColocatairesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('sexe')->add('compte')->add('idColoc')->add('Email')->add('Password');
+        $builder->add('nom')->add('prenom')->add('sexe');
     }/**
      * {@inheritdoc}
      */

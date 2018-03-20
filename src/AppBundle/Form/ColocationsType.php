@@ -14,8 +14,7 @@ class ColocationsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-		
-        $builder->add('id_admin')->add('adresse')->add('ville')->add('nbPers')->add('nbChambre')->add('type', ChoiceType::class, array(
+        $builder->add('adresse')->add('ville')->add('nbPers')->add('nbChambre')->add('type', ChoiceType::class, array(
 		'choices'  => array(
         '...' => "NULL",
         'T1' => "T1",
@@ -23,7 +22,8 @@ class ColocationsType extends AbstractType
 		'T3' => "T3",
 		'T4' => "T4",
 		'T5' => "T5",
-		'T6 et +' => "T6 et +")))->add('prix');
+		'T6 et +' => "T6 et +")))->add('prix')
+		->add('prix');
     }/**
      * {@inheritdoc}
      */
