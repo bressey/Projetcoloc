@@ -1,32 +1,33 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
-<div id="balise">
+
     <div class="container">
 		<div class="col-md-10">
     		<div class="row">
-		    	<h3>{{'colocations'|trans}}</h3>
+		    	<h3>{{'Les informations'|trans}}</h3>
 		    </div>
+			<div class="row">
+				{{'Ville'|trans}}: {{colocations.getVille()}}
+			</div>
 			<div class="row">
 				{{'Adresse'|trans}}: {{colocations.getAdresse()}}
 			</div>
 			<div class="row">
-				{{'Ville'|trans}}: {{colocations.getVille()}}
+				{{'Type'|trans}}: {{colocations.getType()}}
 			</div>
-			<div class="row" style="background-color: #DDDDDD">
-				<br> 
-				<p>{{'nbChambre'|trans}}: {{colocations.getnbChambre()}}</p>
-				<br>
-			</div>	
+			<div class="row">
+				{{'nbChambre'|trans}}: {{colocations.getNbChambre()}}
+			</div>
+			<div class="row">
+				{{'Prix'|trans}}: {{colocations.getPrix()}} €
+			</div>
+				
 
 
-	</div>
-		
-		<div class="col-md-2">
-			<a href="../add/{{colocations.getId()}}" class="btn btn-block btn-success btn-sm">{{ 'action.edit_colocations'|trans }}</a>
-			<a href="../delete/{{colocations.getId()}}" class="btn btn-block btn-danger btn-sm">{{ 'action.delete_colocations'|trans }}</a>
-			<a href="../" class="btn btn-block btn-primary btn-sm">{{ 'action.cancel'|trans }}</a>
 		</div>
+		
+
 	</div>
 	
 </div>

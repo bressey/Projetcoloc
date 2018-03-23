@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Coloc + {% endblock %}</title>
+        <title>{% block title %} Coloc +{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <!-- <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" /> -->
         <!-- Latest compiled and minified CSS -->
@@ -15,10 +15,16 @@
         <nav class="navbar navbar-inverse" style="background-color : #6D071A">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href={{ path('homepage') }}>Coloc +</a>
+                    <a class="navbar-brand" href={{ path('homepage') }}><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Coloc +</a>
                 </div>
 				
-				
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				 <ul class="nav navbar-nav navbar-left">
+					<li >
+						<a href={{ path('mesAnnonces') }}> <span class="glyphicon"></span> {{ 'Mes annonces' | trans }} </a>
+					</li>
+				</ul>
+				{% endif %}
 
                 <ul class="nav navbar-nav navbar-right">
 					<li class="dropdown">
@@ -29,7 +35,10 @@
 							<li><a href={{ path('homepage', {'_locale': 'en' })}}>English</a> </li>
 						</ul>
 					</li>
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+					{% else %}
 					<li><a href={{ path('fos_user_registration_register') }}><span class="glyphicon glyphicon-user"></span> {{ 'sign_up'|trans }}</a></li>
+					{% endif %}
 					{% block head %}
 					{% endblock %}
                 </ul>
@@ -43,10 +52,13 @@
 					{% endblock %}
 				</div>
 			</div>
-
+			<div class="col-md-10">
+			{{ wo_render_breadcrumbs() }}
+			</div>
 			<div id="balise" class="col-md-10">
 				
 					{% block body %}
+					
 					{% endblock %}
 				
 			</div>

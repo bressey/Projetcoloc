@@ -70,6 +70,7 @@
 		<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
 	</form>
 
+	
 {% endblock coteG %}				
 
 {% block body %}
@@ -102,16 +103,16 @@
 						
 							
 						<a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
-						<!-- <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a>  -->
+						<a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a> 
 						 
-						<!-- <a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/> -->
-						<!-- <div id="{{item.getId()}}" style="display:none;"> -->
+						<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
+						<div id="{{item.getId()}}" style="display:none;">
 						
-							<!-- <h6>{{'Are you sure you want to delete'|trans}}</h6> -->
-							<!-- <a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a> -->
-							<!-- <a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}</a> -->
+							<h6>{{'Are you sure you want to delete'|trans}}</h6>
+							<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
+							<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}</a>
 							
-						<!-- </div> -->
+						</div>
 						<br>
 				</div>
 				{% endfor %}

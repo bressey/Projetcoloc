@@ -11,16 +11,17 @@
 	use AppBundle\Form\ActiviteType;
 	use AppBundle\Entity\Colocataires;
 	use AppBundle\Entity\Colocations;
-	use AppBundle\Entity\Activite;
 
-	
-	
-	
 	/**
 	* @Route("/{_locale}")
 	*/
 	class ColocationController extends Controller
 	{	
+	
+
+		
+		
+		
 		/**
 		* @Route("/",name="homepage")
 		* @return \Symfony\Component\HttpFoundaztion\Response
@@ -33,7 +34,11 @@
 				$repository=$this->getDoctrine()->getRepository(Colocations::class);
 				$Coloc=$repository->findAll();
 				dump($Coloc);
-
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
 			}
 			else
@@ -132,7 +137,6 @@
 						
 					}
 				}
-			
 				dump($Coloc_pers);
 				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc_pers]);
 			}
@@ -173,7 +177,15 @@
 		*/
 		public function colocAjout(Request $request){
 			if(!isset($_POST['Ajout'])){
- 				$Coloc=new Colocations();
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Ajout colocation", $this->get("router")->generate("Ajoutcoloc"));
+ 				
+				
+				$Coloc=new Colocations();				
 				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
  				$form->handleRequest($request);
  				if(!$form->isSubmitted() || !$form->isValid()){
@@ -184,6 +196,7 @@
 				$Coloc=new Colocations();
 				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc')]);
 				$form->handleRequest($request);
+				$Coloc->setUser($this->getUser());
 				$em=$this->getDoctrine()->getManager();
 				$em->persist($Coloc);
 				$em->flush();
@@ -240,6 +253,22 @@
 			$em->flush();
 			
 			return $this->redirectToRoute('homepage');
+		}
+		
+		/**
+		* @Route("/mes annonces", name="mesAnnonces")
+		* @return \Symfony\Component\HttpFoundaztion\Response
+		* @throws \LogicException
+		*/
+		public function mesAnnonces(Request $request){
+			if(!isset($_POST['mesAnnonces'])){
+				$repository=$this->getDoctrine()->getRepository(Colocations::class);
+				$Coloc=$repository->findAll();
+				dump($Coloc);
+
+				$Coloc= $repository->findBy( [ 'user' =>$this->getUser()  ] );
+				return $this->render('annonce/mesAnnonces.html.twig',['colocations'=>$Coloc]);
+			}
 		}
 	
 			

@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ColocationsType extends AbstractType
 {
+
     /**
      * {@inheritdoc}
      */

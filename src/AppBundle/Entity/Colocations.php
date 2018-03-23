@@ -2,12 +2,12 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Entity\Colocataires;
 use Doctrine\ORM\Mapping as ORM;
 
 
 /**
  * Colocations
- *
  * @ORM\Table(name="colocations")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ColocationsRepository")
  */
@@ -22,6 +22,13 @@ class Colocations
      */
     protected $id;
 	
+	 
+	/**
+     * @var Colocataires
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Colocataires")
+	 * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * @var string
@@ -76,6 +83,18 @@ class Colocations
     {
         return $this->id;
     }
+	
+	/**
+     * Set User
+     *
+     * @return int
+     */
+    public function setUser(Colocataires $user)
+    {
+		$this->user = $user;
+        return $this;
+    }
+	
 
     /**
      * Set adresse
