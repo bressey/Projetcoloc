@@ -28,15 +28,13 @@
 		// {}
 		
 		/**
-		* @Route("/Demande/", name="AjoutDemande")
-		* @return \Symfony\Component\HttpFoundaztion\Response
-		* @throws \LogicException
+		* @Route("/Demande/{id}",requirements={"id": "\d+"}, name="AjoutDemande")
 		*/
-		public function demandeAjout(Request $request)
+		public function demandeAjout(Colocations $coloc, Request $request)
 		{
 			if(!isset($_POST['Ajout'])){
 				$demande=new Demande();
-				$form = $this->createForm(DemandeType::class,$demande,[ 'action'=>$this->generateUrl('AjoutDemande'),]);
+				$form = $this->createForm(DemandeType::class,$demande);
 				$form->handleRequest($request);
 				if(!$form->isSubmitted() || !$form->isValid()){
 					return $this->render('demande/add.html.twig',['demande_form'=>$form->createView(),'theme' =>$_SESSION['theme'] ]);
@@ -45,10 +43,10 @@
 			else{
 				$demande=new Demande();
 				
-				$form = $this->createForm(DemandeType::class,$demande,[ 'action'=>$this->generateUrl('AjoutDemande')]);
+				$form = $this->createForm(DemandeType::class,$demande);
 				$form->handleRequest($request);
 				$demande->setUser($this->getUser());
-				$demande->setColocation(getColocation());
+				$demande->setColocation($coloc);
 				$demande->setEtat('Attente');
 				
 				$em=$this->getDoctrine()->getManager();

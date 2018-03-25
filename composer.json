@@ -28,7 +28,8 @@
         "symfony/symfony": "3.4.*",
         "symfony/templating": "^3.4",
         "twig/twig": "^1.0||^2.0",
-        "whiteoctober/breadcrumbs-bundle": "^1.4"
+        "whiteoctober/breadcrumbs-bundle": "^1.4",
+        "whiteoctober/tcpdf-bundle": "^1.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",

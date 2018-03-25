@@ -33,7 +33,9 @@
 				$_SESSION['theme'] = $_POST['style'];
 				
 			}else{
-				$_SESSION['theme'] = 'CSS.css';
+				if(empty($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
 			}
 			
 
@@ -293,7 +295,7 @@
 				$form = $this->createForm(ColocationsType::class,$Coloc,[ 'action'=>$this->generateUrl('Ajoutcoloc'),]);
  				$form->handleRequest($request);
  				if(!$form->isSubmitted() || !$form->isValid()){
- 					return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),]);
+ 					return $this->render('colocation/add.html.twig',['coloc_form'=>$form->createView(),'theme'=>$_SESSION['theme'],]);
  				}
 			}
 			else{
