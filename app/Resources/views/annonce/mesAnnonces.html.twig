@@ -1,12 +1,8 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block coteG %}
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	<a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
-{% else %}
-	<a href={{ path('fos_user_security_login') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
-{% endif %}
-
+<div class="col-md-3">
+<div id="balise">
 	<h4>Affiner la recherche</h4>
 	<form method="POST" name="colocation" class="form-horizontal" action="">
 
@@ -69,7 +65,8 @@
 		<input type="submit" name="recherche" value="Valider" class="btn btn-success"/>
 		<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
 	</form>
-
+</div>
+</div>
 	
 {% endblock coteG %}				
 
