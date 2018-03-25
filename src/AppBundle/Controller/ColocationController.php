@@ -19,6 +19,7 @@
 	*/
 	class ColocationController extends Controller
 	{	
+
 		
 		/**
 		* @Route("/",name="homepage")
@@ -27,13 +28,15 @@
 		*/
 		public function indexAction(Request $request)
 		{	
-		
-			
 			if(!empty($_POST['style'])){
 
 				$_SESSION['theme'] = $_POST['style'];
 				
+			}else{
+				$_SESSION['theme'] = 'CSS.css';
 			}
+			
+
 			
 			
 
@@ -344,6 +347,13 @@
 		*/
 		 public function showAction(Colocations $Coloc,Request $request)
 		{
+			$breadcrumbs = $this->get("white_october_breadcrumbs");
+			
+			// Pass "_demo" route name without any parameters
+			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			$breadcrumbs->addItem("Detail");
+			
+				
 			$repository=$this->getDoctrine()->getRepository(Colocations::class);
 			$id = $Coloc->getId();
 			$find = $repository->find($id);

@@ -32,7 +32,7 @@
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/
-		public function demandeAjout(Colocations $Coloc, Request $request)
+		public function demandeAjout(Request $request)
 		{
 			if(!isset($_POST['Ajout'])){
 				$demande=new Demande();
@@ -48,7 +48,7 @@
 				$form = $this->createForm(DemandeType::class,$demande,[ 'action'=>$this->generateUrl('AjoutDemande')]);
 				$form->handleRequest($request);
 				$demande->setUser($this->getUser());
-				$demande->setColocation($Coloc->getColocation());
+				$demande->setColocation(getColocation());
 				$demande->setEtat('Attente');
 				
 				$em=$this->getDoctrine()->getManager();

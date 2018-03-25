@@ -22,9 +22,9 @@
 			<div class="row">
 				{{'Prix'|trans}}: {{colocations.getPrix()}} 
 			</div>
-				
+			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<a href={{ path('AjoutDemande',{'id': colocations.getId() }) }}  class="btn btn-primary btn-md">{{ 'Faire une demande'|trans }}</a> 
-
+			{% endif %}
 		</div>
 		
 

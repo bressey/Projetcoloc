@@ -1,6 +1,8 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block coteG %}
+			<div class="col-md-3">
+				<div id="balise">
 	<h4>Changer le style</h4>
 	<form name='theme' method = "POST" action="" >
 	<SELECT name = 'style'>
@@ -73,7 +75,8 @@
 		<input type="submit" name="recherche" value="Valider" class="btn btn-success"/>
 		<a class="btn" href={{ path('homepage') }}>{{ 'action.cancel'|trans }}</a>
 	</form>
-
+		</div>
+			</div>
 {% endblock coteG %}				
 
 {% block body %}
