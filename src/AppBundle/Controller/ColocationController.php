@@ -33,9 +33,8 @@
 
 				$_SESSION['theme'] = $_POST['style'];
 				
-			}else{
-				$_SESSION['theme'] = 'CSS.css';
 			}
+			
 			
 
 			if(!isset($_POST['recherche']))

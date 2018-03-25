@@ -26,14 +26,14 @@ class Demande
 	 
 	/**
      * @var Colocataires
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Colocataires")
+	 * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Colocataires")
 	 * @ORM\JoinColumn(nullable=false)
      */
     private $user;
 
     /**
      * @var Colocations
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Colocations")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Colocations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $colocation;
