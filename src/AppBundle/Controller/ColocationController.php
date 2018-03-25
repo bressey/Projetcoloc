@@ -8,19 +8,17 @@
 	use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 	use AppBundle\Form\ColocatairesType;
 	use AppBundle\Form\ColocationsType;
+	use AppBundle\Form\DemandeType;
 	use AppBundle\Form\ActiviteType;
 	use AppBundle\Entity\Colocataires;
 	use AppBundle\Entity\Colocations;
+	use AppBundle\Entity\Demande;
 
 	/**
 	* @Route("/{_locale}")
 	*/
 	class ColocationController extends Controller
 	{	
-	
-
-		
-		
 		
 		/**
 		* @Route("/",name="homepage")
@@ -28,33 +26,83 @@
 		* @throws \LogicException
 		*/
 		public function indexAction(Request $request)
-		{
+		{	
+		
+			
+			if(!empty($_POST['style'])){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				$_SESSION['theme'] = 'CSS.css';
+			}
+			
+
 			if(!isset($_POST['recherche']))
 			{
 				$repository=$this->getDoctrine()->getRepository(Colocations::class);
 				$Coloc=$repository->findAll();
+				
+				
 				dump($Coloc);
 				$breadcrumbs = $this->get("white_october_breadcrumbs");
 				
 				// Pass "_demo" route name without any parameters
 				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			
+					
+					return $this->render('colocation/index.html.twig',array('colocations'=>$Coloc, 'theme' =>$_SESSION['theme'] ));
 				
-				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc]);
+				
+				
 			}
 			else
 			{
+				
 				$repository = $this->getDoctrine()
                    ->getManager()
                    ->getRepository(Colocations::class);
+				   
+				   
+												
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Recherche");  
+				   
+				$Coloc_pers = $repository->findAll();
 				if(( $_POST['prixMax'])=="NULL" AND ( $_POST['prixMin'])=="NULL"){ 
 					if(!empty($_POST['ville'])){
 						if(( $_POST['nbPers'])!="NULL"){
+
 							if(($_POST['type'])!="NULL"){
-								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+								$Coloc_pers = $repository->findBy( ['type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+
 							}
 							else{
-								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
+								$Coloc_pers = $repository->findBy( [ 'ville' =>$_POST['ville'] ] );
+
 							}
+							
+							$pers = $_POST['nbPers'];
+							$personne = Array();
+							if( $pers == 6){
+								
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() >= 6){
+										$personne[] = $c;
+									}
+								}
+							}else{
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() == $pers){
+										$personne[] = $c;
+									}
+								}
+							}
+							
+							$Coloc_pers = $personne;
 						}
 						else{
 							if(($_POST['type'])!="NULL"){
@@ -66,11 +114,28 @@
 					}else{
 						if(( $_POST['nbPers'])!="NULL"){
 							if(($_POST['type'])!="NULL"){
-								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+								$Coloc_pers = $repository->findBy( ['type' => $_POST['type']] );
+							}else{
+								$Coloc_pers = $repository->findAll();
 							}
-							else{
-								$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
+							$pers = $_POST['nbPers'];
+							$personne = Array();
+							if( $pers == 6){
+								
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() >= 6){
+										$personne[] = $c;
+									}
+								}
+							}else{
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() == $pers){
+										$personne[] = $c;
+									}
+								}
 							}
+							
+							$Coloc_pers = $personne;
 						}
 						else{
 							if(($_POST['type'])!="NULL"){
@@ -94,13 +159,31 @@
 					if(!empty($_POST['ville'])){
 						if(( $_POST['nbPers'])!="NULL"){
 								if(($_POST['type'])!="NULL"){
-									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
+									$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']  ] );
 									$Coloc_pers = $this->prixInf($Coloc_pers, $prixMax, $prixMin);
 								}
 								else{
-									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'ville' =>$_POST['ville'] ] );
+									$Coloc_pers = $repository->findBy( [ 'ville' =>$_POST['ville'] ] );
 									$Coloc_pers = $this->prixInf($Coloc_pers, $prixMax, $prixMin);
 								}
+								$pers = $_POST['nbPers'];
+							$personne = Array();
+							if( $pers == 6){
+								
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() >= 6){
+										$personne[] = $c;
+									}
+								}
+							}else{
+								foreach($Coloc_pers as $c){
+									if($c->getNbPers() == $pers){
+										$personne[] = $c;
+									}
+								}
+							}
+							
+							$Coloc_pers = $personne;
 							}else{
 								if(($_POST['type'])!="NULL"){
 									$Coloc_pers = $repository->findBy( [ 'type' => $_POST['type'], 'ville' =>$_POST['ville']] );
@@ -116,13 +199,31 @@
 							
 							if(( $_POST['nbPers'])!="NULL"){
 								if(($_POST['type'])!="NULL"){
-									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'], 'type' => $_POST['type']] );
+									$Coloc_pers = $repository->findBy( ['type' => $_POST['type']] );
 									$Coloc_pers = $this->prixInf($Coloc_pers, $prixMax, $prixMin);
 								}
 								else{
-									$Coloc_pers = $repository->findBy( ['nbPers' => $_POST['nbPers'] ] );
+									$Coloc_pers = $repository->findAll();
 									$Coloc_pers = $this->prixInf($Coloc_pers, $prixMax, $prixMin);
 								}
+								$pers = $_POST['nbPers'];
+								$personne = Array();
+								if( $pers == 6){
+									
+									foreach($Coloc_pers as $c){
+										if($c->getNbPers() >= 6){
+											$personne[] = $c;
+										}
+									}
+								}else{
+									foreach($Coloc_pers as $c){
+										if($c->getNbPers() == $pers){
+											$personne[] = $c;
+										}
+									}
+								}
+								
+								$Coloc_pers = $personne;
 							}
 							else{
 								if(($_POST['type'])!="NULL"){
@@ -138,7 +239,8 @@
 					}
 				}
 				dump($Coloc_pers);
-				return $this->render('colocation/index.html.twig',['colocations'=>$Coloc_pers]);
+
+				return $this->render('colocation/index.html.twig',array('colocations'=>$Coloc_pers, 'theme' =>$_SESSION['theme'] ));
 			}
 		}
 		
@@ -212,17 +314,27 @@
 		public function updateAction(Colocations $Coloc,Request $request)
 		{
 			if(!isset($_POST['Valider'])){
+				
+								
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+				$breadcrumbs->addItem("Editer");
+				
 				$form = $this->createForm(ColocationsType::class,$Coloc);
 				$form->handleRequest($request);
 				if(!$form->isSubmitted() || !$form->isValid()){
 					return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),]);
 				}
+
 			}
 			else{
 				$form = $this->createForm(ColocationsType::class,$Coloc);
 				$form->handleRequest($request);
 				$em=$this->getDoctrine()->getManager();
-				$em->flush();
+				$em->flush();				
 				unset($_POST);
 				return $this->redirectToRoute('homepage');
 			}
@@ -237,7 +349,8 @@
 			$id = $Coloc->getId();
 			$find = $repository->find($id);
 			if( null != $find){
-				return $this->render('colocation/show.html.twig',['colocations'=>$Coloc,]);
+				return $this->render('colocation/show.html.twig',['colocations'=>$Coloc,'theme' =>$_SESSION['theme'], 'coloc'=>$id ]);
+				
 			}
 			
 			return $this->redirectToRoute('homepage');
@@ -267,7 +380,14 @@
 				dump($Coloc);
 
 				$Coloc= $repository->findBy( [ 'user' =>$this->getUser()  ] );
-				return $this->render('annonce/mesAnnonces.html.twig',['colocations'=>$Coloc]);
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+				
+				return $this->render('annonce/mesAnnonces.html.twig',['colocations'=>$Coloc,'theme' =>$_SESSION['theme'] ]);
 			}
 		}
 	

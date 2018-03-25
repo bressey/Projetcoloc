@@ -1,12 +1,16 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block coteG %}
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-	<a href={{ path('Ajoutcoloc') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
-{% else %}
-	<a href={{ path('fos_user_security_login') }} class="btn btn-success"> {{ 'Ajout_coloc' | trans }} </a>
-{% endif %}
-
+	<h4>Changer le style</h4>
+	<form name='theme' method = "POST" action="" >
+	<SELECT name = 'style'>
+	<OPTION value = "NULL" selected> ...</option>
+		<OPTION value = "CSS.css"> Style 1 </option>
+		<OPTION value = "2.css" > Style 2 </option>
+		<OPTION value = "3.css" > Style 3 </option>
+	</select>
+	<INPUT type ="submit" name="Changer" class="btn btn-success" value = "Changer de theme" />
+	</form>
 	<h4>Affiner la recherche</h4>
 	<form method="POST" name="colocation" class="form-horizontal" action="">
 
@@ -31,7 +35,7 @@
 			  <option>3</option>
 			  <option>4</option>
 			  <option>5</option>
-			  <option>6 et +</option>
+			  <option value = 6 >6 et +</option>
   
 		</select><br>
 		<label >Par Prix</label>
@@ -94,10 +98,10 @@
 			<h1> {{ 'colocations'|trans }} </h1>
 			
 				{% for item in colocations %}
-				<div class="col-md-3 grille" >
+				<div class="col-md-4 grille" >
 						{{ 'nbChambre' |trans }} : {{item.getNbChambre()}} <br>
 						{{ 'nbPers' |trans }} : {{item.getNbPers()}}<br>
-						{{ 'adresse' |trans }} : {{item.adresse()}}<br>
+						{{ 'Ville' |trans }} : {{item.Ville()}}<br>
 						{{ 'Prix' |trans }} : {{item.prix()}} € <br>
 						
 							

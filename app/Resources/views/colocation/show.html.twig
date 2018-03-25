@@ -20,10 +20,10 @@
 				{{'nbChambre'|trans}}: {{colocations.getNbChambre()}}
 			</div>
 			<div class="row">
-				{{'Prix'|trans}}: {{colocations.getPrix()}} €
+				{{'Prix'|trans}}: {{colocations.getPrix()}} 
 			</div>
 				
-
+			<a href={{ path('AjoutDemande',{'id': colocations.getId() }) }}  class="btn btn-primary btn-md">{{ 'Faire une demande'|trans }}</a> 
 
 		</div>
 		

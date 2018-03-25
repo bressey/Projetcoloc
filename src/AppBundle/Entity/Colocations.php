@@ -87,7 +87,7 @@ class Colocations
 	/**
      * Set User
      *
-     * @return int
+     * @return user
      */
     public function setUser(Colocataires $user)
     {
