@@ -9,7 +9,6 @@
 	use AppBundle\Form\ColocatairesType;
 	use AppBundle\Form\ColocationsType;
 	use AppBundle\Form\DemandeType;
-	use AppBundle\Form\ActiviteType;
 	use AppBundle\Entity\Colocataires;
 	use AppBundle\Entity\Colocations;
 	use AppBundle\Entity\Demande;
@@ -330,7 +329,7 @@
 				$form = $this->createForm(ColocationsType::class,$Coloc);
 				$form->handleRequest($request);
 				if(!$form->isSubmitted() || !$form->isValid()){
-					return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),]);
+					return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),'theme'=>$_SESSION['theme'],]);
 				}
 
 			}

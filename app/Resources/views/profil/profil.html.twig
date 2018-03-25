@@ -1,37 +1,41 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
+<div  id="ariane" class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
 
+<div id="centre" class="col-md-9">
+	<div class="container">
+			<div class="col-md-10">
+				<div class="row">
+					<h3>{{'Mon profil'|trans}}</h3>
+				</div>
+				<div class="row">
+					{{'Nom'|trans}}: {{profil.getNom()}}
+				</div>
+				<div class="row">
+					{{'Prenom'|trans}}: {{profil.getPrenom()}}
+				</div>
+				<div class="row">
+					{{'Username'|trans}}: {{profil.getUsername()}} €
+				</div>
+				<div class="row">
+					{{'Sexe'|trans}}: {{profil.getSexe()}}
+				</div>
+				<div class="row">
+					{{'Email'|trans}}: {{profil.getEmail()}}
+				</div>
 
-<div class="container">
-		<div class="col-md-10">
-    		<div class="row">
-		    	<h3>{{'Mon profil'|trans}}</h3>
-		    </div>
-			<div class="row">
-				{{'Nom'|trans}}: {{profil.getNom()}}
-			</div>
-			<div class="row">
-				{{'Prenom'|trans}}: {{profil.getPrenom()}}
-			</div>
-			<div class="row">
-				{{'Username'|trans}}: {{profil.getUsername()}} €
-			</div>
-			<div class="row">
-				{{'Sexe'|trans}}: {{profil.getSexe()}}
-			</div>
-			<div class="row">
-				{{'Email'|trans}}: {{profil.getEmail()}}
-			</div>
+				<a href={{ path('fos_user_profile_edit') }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a>
+				
 
-			<a href={{ path('fos_user_profile_edit') }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a>
+			</div>
 			
 
 		</div>
 		
-
 	</div>
-	
 </div>
 
 {% endblock body %}

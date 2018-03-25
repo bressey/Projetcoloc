@@ -29,7 +29,14 @@
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/
-		public function monProfil(Request $request){
+		public function monProfil(Request $request)
+		{
+			$breadcrumbs = $this->get("white_october_breadcrumbs");
+			
+			// Pass "_demo" route name without any parameters
+			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			$breadcrumbs->addItem("Mon Profil");
+				
 			
 			$repository=$this->getDoctrine()->getRepository(Colocataires::class);
 			

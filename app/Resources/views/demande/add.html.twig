@@ -1,7 +1,12 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
-<div id="balise">
+<div  id="ariane" class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
+
+<div id="centre" class="col-md-9">
+
 
 	{% form_theme demande_form 'bootstrap_4_layout.html.twig' %} 
 	<form method="POST" name="demandeation" class="form-horizontal" action="">

@@ -1,11 +1,15 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
-<div id="balise">
+<div  id="ariane" class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
+
+<div id="centre" class="col-md-10">
 
 	{% form_theme coloc_form 'bootstrap_4_layout.html.twig' %} 
 	<form method="POST" name="colocation" class="form-horizontal" action="">
-	
+	<br>
 		<div class="control-group">
 			{{form_label(coloc_form.adresse)}}
 			{{form_errors(coloc_form.adresse)}}

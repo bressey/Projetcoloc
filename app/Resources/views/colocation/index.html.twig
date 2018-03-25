@@ -4,13 +4,14 @@
 			<div class="col-md-3">
 				<div id="balise">
 	<h4>Changer le style</h4>
-	<form name='theme' method = "POST" action="" >
-	<SELECT name = 'style'>
+		<form name='theme' method = "POST" class="form-horizontal"  action="" >
+	<SELECT class="form-control" name = 'style'>
 	<OPTION value = "NULL" selected> ...</option>
 		<OPTION value = "CSS.css"> Style 1 </option>
 		<OPTION value = "2.css" > Style 2 </option>
 		<OPTION value = "3.css" > Style 3 </option>
 	</select>
+	<br>
 	<INPUT type ="submit" name="Changer" class="btn btn-success" value = "Changer de theme" />
 	</form>
 	<h4>Affiner la recherche</h4>
@@ -80,7 +81,11 @@
 {% endblock coteG %}				
 
 {% block body %}
+<div  class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
 
+<div id="balise" class="col-md-9">
 		<script>
 			function visibilite(Id)
 			{
@@ -122,6 +127,6 @@
 						<br>
 				</div>
 				{% endfor %}
-
+</div>
 {% endblock body %}
 

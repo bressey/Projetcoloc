@@ -20,18 +20,47 @@
 	class DemandeController extends Controller
 	{	
 		/**
-		* @Route("/",name="homepage")
+		* @Route("/mesColocataires/",name="mesColocataires")
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/
-		// public function indexAction(Request $request)
-		// {}
+		public function mesColocataires(Request $request)
+		{
+			$breadcrumbs = $this->get("white_october_breadcrumbs");
+			
+			//Pass "_demo" route name without any parameters
+			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			$breadcrumbs->addItem("Mes colocataires", $this->get("router")->generate("mesColocataires"));
+			
+			$repository=$this->getDoctrine()->getRepository(Demande::class);
+			$recu= $repository->findAll();
+			$demande=Array();
+			foreach($recu as $r){
+				if($r->getColocation()->getUser() == $this->getUser() AND $r->getEtat() == 'Accepter' ){
+					$demande[] = $r;
+				}
+			}
+			
+
+			
+			return $this->render('demande/mesColocataires.html.twig',['accepter'=>$demande,'theme' =>$_SESSION['theme'] ]);
+			
+			
+		}
 		
 		/**
 		* @Route("/Demande/{id}",requirements={"id": "\d+"}, name="AjoutDemande")
 		*/
 		public function demandeAjout(Colocations $coloc, Request $request)
 		{
+			$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+			// Pass "_demo" route name without any parameters
+			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			$url = "/Developpement%20web/Projet/Projetcoloc/web/app_dev.php/fr/show/".$coloc->getId();
+			$breadcrumbs->addItem("Detail", $url);
+			$breadcrumbs->addItem("Demande");
+			
 			if(!isset($_POST['Ajout'])){
 				$demande=new Demande();
 				$form = $this->createForm(DemandeType::class,$demande);
@@ -58,25 +87,141 @@
 		}
 		
 		
-		// /**
-		// * @Route("/edit/{id}",requirements={"id": "\d+"}, name="editDemande")
-		// */
+		/**
+		* @Route("/Accepter/{id}",requirements={"id": "\d+"}, name="accepteDemande")
+		*/
 		
-		// public function updateDemande(Demande $demande,Request $request)
-		// {}
+		public function updateDemande(Demande $demande,Request $request)
+		{
+			$repository=$this->getDoctrine()->getRepository(Demande::class);
+			$id = $demande->getId();
+			$find = $repository->find($id);
+			
+			if( null != $find){
+				
+				$demande->setEtat("Accepter");
+				
+	
+				$form = $this->createForm(DemandeType::class,$demande);
+				$form->handleRequest($request);
+				$em=$this->getDoctrine()->getManager();
+				$em->flush();				
+				
+				
+				$Coloc = Array();
+				$Demande= $repository->findBy( [ 'user' =>$this->getUser()  ] );
+				foreach($Demande as $d){
+					if($d->getEtat() == 'Attente' ){
+						$Coloc[] = $d->getColocation();
+					}
+				}
+				
+				$recu= $repository->findAll();
+				$demandeRec=Array();
+				foreach($recu as $r){
+					if($r->getColocation()->getUser() == $this->getUser() AND $r->getEtat() == 'Attente' ){
+						$demandeRec[] = $r;
+					}
+				}
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				//Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+				
+				return $this->render('demande/mesDemandes.html.twig',['colocations'=>$Coloc,'recus'=>$demandeRec,'theme' =>$_SESSION['theme'] ]);
+				
+				
+			}else{
+			
+				return $this->redirectToRoute('homepage');
+			}
+		}
 		
-		// /**
-		// *@Route("/show/{id}",requirements={"id": "\d+"}, name="showDemande")
-		// */
-		 // public function showDemande(Demande $demande,Request $request)
-		// {}
+		/**
+		*@Route("/MesDemandes/",name="mesDemandes")
+		*/
+		 public function mesDemandes(Request $request)
+		{
+			if(!isset($_POST['mesDemandes'])){
+				$repository=$this->getDoctrine()->getRepository(Demande::class);
+				
+				
+				
+				$Coloc = Array();
+				$Demande= $repository->findBy( [ 'user' =>$this->getUser()  ] );
+				foreach($Demande as $d){
+					if($d->getEtat() == 'Attente' ){
+						$Coloc[] = $d->getColocation();
+					}
+				}
+				
+				$recu= $repository->findAll();
+				$demandeRec=Array();
+				foreach($recu as $r){
+					if($r->getColocation()->getUser() == $this->getUser() AND $r->getEtat() == 'Attente' ){
+						$demandeRec[] = $r;
+					}
+				}
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+				
+				return $this->render('demande/mesDemandes.html.twig',['colocations'=>$Coloc,'recus'=>$demandeRec,'theme' =>$_SESSION['theme'] ]);
+			}
+		}
 		
 		
-		// /**
-		// * @Route("/delete/{id}", requirements={"id": "\d+"}, name="deleteDemande")
-		// */
-		// public function deleteDemande(Demande $demande,Request $request)
-		// {}
+		/**
+		* @Route("/refuser/{id}", requirements={"id": "\d+"}, name="deleteDemande")
+		*/
+		public function deleteDemande(Demande $demande,Request $request)
+		{
+			$repository=$this->getDoctrine()->getRepository(Demande::class);
+			$id = $demande->getId();
+			$find = $repository->find($id);
+			
+			if( null != $find){
+				$em=$this->getDoctrine()->getManager();
+				$em->remove($demande);
+				$em->flush();
+	
+				
+				$Coloc = Array();
+				$Demande= $repository->findBy( [ 'user' =>$this->getUser()  ] );
+				foreach($Demande as $d){
+					if($d->getEtat() == 'Attente'){
+						$Coloc[] = $d->getColocation();
+					}
+				}
+				
+				$recu= $repository->findAll();
+				$demandeRec=Array();
+				foreach($recu as $r){
+					if($r->getColocation()->getUser() == $this->getUser() AND $r->getEtat() == 'Attente'){
+						$demandeRec[] = $r;
+					}
+				}
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				//Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+				
+				return $this->render('demande/mesDemandes.html.twig',['colocations'=>$Coloc,'recus'=>$demandeRec,'theme' =>$_SESSION['theme'] ]);
+				
+				
+			}else{
+			
+				return $this->redirectToRoute('homepage');
+			}
+			
+		}
 		
 		
 	}

@@ -31,6 +31,12 @@
 					<li>
 						<a href={{ path('monProfil') }} class="glyphicon glyphicon-user"> {{ 'Mon profil' | trans }} </a>
 					</li>
+					<li>
+						<a href={{ path('mesDemandes' ) }} class="glyphicon glyphicon-envelope"> {{ 'Mes demandes' | trans }} </a>
+					</li>
+					<li>
+						<a href={{ path('mesColocataires' ) }} class="glyphicon glyphicon-saved"> {{ 'Mes colocataires' | trans }} </a>
+					</li>
 				</ul>
 				{% endif %}
 				
@@ -53,29 +59,15 @@
                 </ul>
             </div>
         </nav>
-		
-		
-
-					
+							
 			{% block coteG %}
 			{% endblock %}
 		
-			<div class="col-md-9">
-			{{ wo_render_breadcrumbs() }}
-			</div>
-			<div id="balise" class="col-md-9">
-				
-					{% block body %}
-					
-					{% endblock %}
-				
-			</div>
+			{% block body %}
 			
-		
-		
+			{% endblock %}
+				
 
-		
-        
         {% block javascripts %}
             <!-- jQuery library -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

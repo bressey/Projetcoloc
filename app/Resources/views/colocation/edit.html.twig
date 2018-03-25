@@ -1,9 +1,12 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
-
+<div  id="ariane" class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
+<div id="centre" class="col-md-9">
 	{% form_theme edit_coloc_form 'bootstrap_4_layout.html.twig' %}
-    <div id="balise" class="container">
+   
 		<div class="span10 offset1">
     		<div class="row">
 		    	<h3>{{ 'colocations'|trans }}</h3>
@@ -47,7 +50,7 @@
 		</form>
 		</br>
 
-	</div>
+	
 </div>
 {% endblock %}
 

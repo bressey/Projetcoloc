@@ -17,6 +17,21 @@
 	margin-right: auto;
 }
 
+#centre{ 
+	background: linear-gradient(GhostWhite,Gainsboro); font: 18px/1.5 sans-serif;
+	border-radius: 5px;
+	padding : 30px;
+	float: none;
+	margin: 0 auto;
+	
+}
+#ariane{ 
+
+	float: none;
+	margin: 0 auto;
+	
+}
+
 #coteG {
 	background: white; font: 18px/1.5 sans-serif;
 	border-radius: 5px;

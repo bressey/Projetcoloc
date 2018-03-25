@@ -85,6 +85,18 @@ class Colocations
     }
 	
 	/**
+     * Get User
+     *
+     * @return user
+     */
+    public function getUser()
+    {
+		
+        return $this->user;
+    }
+	
+	
+	/**
      * Set User
      *
      * @return user

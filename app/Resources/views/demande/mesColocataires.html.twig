@@ -1,11 +1,10 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block coteG %}
-<div class="col-md-3">
-<div id="balise">
-
+			<div class="col-md-3">
+				<div id="balise">
 	<h4>Changer le style</h4>
-		<form name='theme' method = "POST" class="form-horizontal"  action="" >
+	<form name='theme' method = "POST" class="form-horizontal"  action="" >
 	<SELECT class="form-control" name = 'style'>
 	<OPTION value = "NULL" selected> ...</option>
 		<OPTION value = "CSS.css"> Style 1 </option>
@@ -39,7 +38,7 @@
 			  <option>3</option>
 			  <option>4</option>
 			  <option>5</option>
-			  <option>6 et +</option>
+			  <option value = 6 >6 et +</option>
   
 		</select><br>
 		<label >Par Prix</label>
@@ -79,11 +78,10 @@
 	</form>
 </div>
 </div>
-	
 {% endblock coteG %}				
 
 {% block body %}
-<div  class="col-md-9">
+<div   class="col-md-9">
 {{ wo_render_breadcrumbs() }}
 </div>
 
@@ -103,34 +101,37 @@
 			}
 		</script>
 	
+			{% if accepter|length != 0 %}			
+			<h1> {{ 'Mes colocataires'|trans }} </h1>
 		
+			{% for recu in accepter %}
+			<div class="col-md-4 grille" >
+					{{ 'Ville' |trans }} : {{recu.getColocation().Ville()}}<br>
+					{{ 'Prix' |trans }} : {{recu.getColocation().prix()}} € <br>
+					<h4> {{ 'Infos de la personne : '|trans }} </h4>
+					{{ 'Commentaire' |trans }} : {{recu.getComment()}} <br>
+					{{ 'Nom' |trans }} : {{recu.getUser().getNom() }} <br>
+					{{ 'Prenom' |trans }} : {{recu.getUser().getPrenom() }} <br>
+					
+					
+					
+					
+					<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{recu.getId()}});">{{ 'Supprimer'|trans }}<a/>
+					<div id="{{recu.getId()}}" style="display:none;">
+					
+						<h6>{{'Are you sure you want to delete'|trans}}</h6>
+						<a id= "cacher2" href={{ path('deleteDemande' , {'id': recu.getId() }) }}>{{'Yes'| trans}}</a>
+						<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{recu.getId()}});">{{ 'No'| trans}}</a>
 						
-			
-			<h1> {{ 'colocations'|trans }} </h1>
-			
-				{% for item in colocations %}
-				<div class="col-md-3 grille" >
-						{{ 'nbChambre' |trans }} : {{item.getNbChambre()}} <br>
-						{{ 'nbPers' |trans }} : {{item.getNbPers()}}<br>
-						{{ 'adresse' |trans }} : {{item.adresse()}}<br>
-						{{ 'Prix' |trans }} : {{item.prix()}} € <br>
-						
-							
-						<a href={{ path('showColoc' , {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
-						<a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a> 
-						 
-						<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/>
-						<div id="{{item.getId()}}" style="display:none;">
-						
-							<h6>{{'Are you sure you want to delete'|trans}}</h6>
-							<a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a>
-							<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}</a>
-							
-						</div>
-						<br>
-				</div>
-				{% endfor %}
-	</div>			
+					</div>	
+					
 
+					<br>
+			</div>
+			{% endfor %}
+			{% endif %}
+			<br>
+
+</div>
 {% endblock body %}
 
