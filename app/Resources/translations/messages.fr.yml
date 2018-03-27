@@ -1,25 +1,52 @@
-sign_up: S'inscrire
-login: Se connecter
-action.cancel: Retour
+action.cancel: Annuler
 colocations: Colocations
 nbChambre: Nombre de chambre
-nbPers: Nombre de Personnes
+nbPers: Nombre de personne
 adresse: Adresse
+Prix: Prix
 show: Détail
 edit: Editer
 delete: Supprimer
-Ajout_coloc: 'Ajout colocation'
-'Are you sure you want to delete': 'Etes-vous sure de vouloir supprimer cette annonce ?'
+'Are you sure you want to delete': 'Etes vous sur de vouloir suppprimer cette annonce'
 'Yes': Oui
 'No': Non
-logout: __logout
-action.cancel: __action.cancel
-label.maker: __label.maker
-label.made_at: __label.made_at
-label.summary: __label.summary
-title.roles_list: __title.roles_list
-label.name: __label.name
-label.actorName: __label.actorName
-label.actorFirstName: __label.actorFirstName
-action.edit_film: __action.edit_film
-action.delete_film: __action.delete_film
+Mes_annonces: Mes_annonces
+Ajout_coloc: Ajouter une colocation
+Mon_profil: Mon_profil
+Mes_demandes: Mes demandes
+Mes_colocataires: Mes colocataires
+sign_up: S'inscrire
+'Flux RSS code': 'Flux RSS code'
+Ville: Ville
+Adresse: Adresse
+action.edit_colocations: Editer
+action.delete_colocations: Supprimer
+'Les informations': 'Les informations'
+Type: Type
+'Faire une demande': 'Faire une demande'
+'Mes colocataires': 'Mes colocataires'
+'Infos de la personne :': 'Infos de la personne :'
+Commentaire: Commentaire
+Nom: Nom
+Prenom: Prenom
+Supprimer: Supprimer
+'Demande envoyés': 'Demande envoyées'
+'Demande recues': 'Demande recues'
+Accepter: Accepter
+Refuser: Refuser
+'Mon profil': 'Mon profil'
+Username: Pseudo
+Sexe: Sexe
+Email: Email
+Colocations: Colocations
+'Les nouvelles colocations': 'Les nouvelles colocations'
+menu.rss: menu.rss
+'Changer le style': 'Changer le style'
+'Changer de theme': 'Changer de theme'
+'Affiner la recherche': 'Affiner la recherche'
+'Par Ville': 'Par Ville'
+'Par Type': 'Par Type'
+'Par nombre de personne': 'Par nombre de personne'
+'Par Prix': 'Par Prix'
+'Prix Min': 'Prix Min'
+'Prix Max': 'Prix Max'

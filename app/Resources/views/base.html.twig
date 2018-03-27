@@ -23,20 +23,25 @@
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 				 <ul class="nav navbar-nav navbar-left">
 					<li >
-						<a href={{ path('mesAnnonces') }}> <span class="glyphicon glyphicon-th-list"></span> {{ 'Mes annonces' | trans }} </a>
+						<a href={{ path('mesAnnonces') }}> <span class="glyphicon glyphicon-th-list"></span> {{ 'Mes_annonces' | trans }} </a>
 					</li>
 					<li>
 						<a href={{ path('Ajoutcoloc') }} class="glyphicon glyphicon-floppy-open"> {{ 'Ajout_coloc' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('monProfil') }} class="glyphicon glyphicon-user"> {{ 'Mon profil' | trans }} </a>
+						<a href={{ path('monProfil') }} class="glyphicon glyphicon-user"> {{ 'Mon_profil' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('mesDemandes' ) }} class="glyphicon glyphicon-envelope"> {{ 'Mes demandes' | trans }} </a>
+						<a href={{ path('mesDemandes' ) }} class="glyphicon glyphicon-envelope"> {{ 'Mes_demandes' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('mesColocataires' ) }} class="glyphicon glyphicon-saved"> {{ 'Mes colocataires' | trans }} </a>
+						<a href={{ path('mesColocataires' ) }} class="glyphicon glyphicon-saved"> {{ 'Mes_colocataires' | trans }} </a>
 					</li>
+					{% if is_granted("ROLE_ADMIN") %}
+					<li>
+						<a href={{ path('administrateur' ) }} class="glyphicon glyphicon-wrench"> {{ 'Gestion des utilisateurs' | trans }} </a>
+					</li>
+					{% endif %}
 				</ul>
 				{% endif %}
 				
@@ -67,7 +72,7 @@
 			
 			{% endblock %}
 				
-
+		
         {% block javascripts %}
             <!-- jQuery library -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -76,7 +81,9 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         {% endblock %}
 		        <div class="col-sm-12 footer">
+				<a href={{ path('fluxRSS' )}} class="btn btn-warning btn-md" style="float:right">{{ 'Flux RSS code'|trans }}</a>
             {% block footer %}
+			
 				<p>Copyright (c) 2018 L3 Miage - Université de Nantes </p>
 			{% endblock %}
 

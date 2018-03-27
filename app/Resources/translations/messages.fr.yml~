@@ -1,13 +1,43 @@
-sign_up: S'inscrire
-login: Se connecter
-colocations: Colocations
-nbChambre: Nombre de chambre
-nbPers: Nombre de Personnes
-adresse: Adresse
-show: Détail
-edit: Editer
-delete: Supprimer
-Ajout_coloc: Ajout colocation
-'Are you sure you want to delete': Etes-vous sure de vouloir supprimer cette annonce ?
-'Yes': Oui
-'No': Non
+action.cancel: __action.cancel
+colocations: __colocations
+nbChambre: __nbChambre
+nbPers: __nbPers
+adresse: __adresse
+Prix: __Prix
+show: __show
+edit: __edit
+delete: __delete
+'Are you sure you want to delete': '__Are you sure you want to delete'
+'Yes': __Yes
+'No': __No
+Mes_annonces: __Mes_annonces
+Ajout_coloc: __Ajout_coloc
+Mon_profil: __Mon_profil
+Mes_demandes: __Mes_demandes
+Mes_colocataires: __Mes_colocataires
+sign_up: __sign_up
+'Flux RSS code': '__Flux RSS code'
+Ville: __Ville
+Adresse: __Adresse
+action.edit_colocations: __action.edit_colocations
+action.delete_colocations: __action.delete_colocations
+'Les informations': '__Les informations'
+Type: __Type
+'Faire une demande': '__Faire une demande'
+'Mes colocataires': '__Mes colocataires'
+'Infos de la personne :': '__Infos de la personne :'
+Commentaire: __Commentaire
+Nom: __Nom
+Prenom: __Prenom
+Supprimer: __Supprimer
+'Demande envoyés': '__Demande envoyés'
+'Demande recues': '__Demande recues'
+Accepter: __Accepter
+Refuser: __Refuser
+'Mon profil': '__Mon profil'
+Username: __Username
+Sexe: __Sexe
+Email: __Email
+Colocations: __Colocations
+'Les nouvelles colocations': '__Les nouvelles colocations'
+menu.rss: __menu.rss

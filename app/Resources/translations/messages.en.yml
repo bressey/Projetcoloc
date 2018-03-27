@@ -1,24 +1,52 @@
-sign_up: 'Sign Up'
-login: Login
-action.cancel: Cancel
-colocations: Flats
-nbChambre: 'Number of rooms'
-nbPers: 'Number of Persons'
+action.cancel: cancel
+colocations: flatsharing
+nbChambre: Number of room
+nbPers: Number of person
 adresse: Adress
-show: Details
-edit: Edit
-delete: Delete
-Ajout_coloc: 'Add flat'
-'Are you sure you want to delete': 'Are you sure you want to delete ?'
-'Yes': 'Yes'
-'No': 'No'
-logout: __logout
-label.maker: __label.maker
-label.made_at: __label.made_at
-label.summary: __label.summary
-title.roles_list: __title.roles_list
-label.name: __label.name
-label.actorName: __label.actorName
-label.actorFirstName: __label.actorFirstName
-action.edit_film: __action.edit_film
-action.delete_film: __action.delete_film
+Prix: Price
+show: show
+edit: edit
+delete: delete
+'Are you sure you want to delete': 'Are you sure you want to delete'
+'Yes': Yes
+'No': No
+Mes_annonces: My ads
+Ajout_coloc: add flat
+Mon_profil: My prfile
+Mes_demandes: My requests
+Mes_colocataires: My roommates
+sign_up: sign_up
+'Flux RSS code': 'Flux RSS code'
+Ville: City
+Adresse: Adress
+action.edit_colocations: __edit
+action.delete_colocations: delete
+'Les informations': 'The informations'
+Type: Type
+'Faire une demande': 'Make a request'
+'Mes colocataires': 'My roommates'
+'Infos de la personne :': 'Infos of the person :'
+Commentaire: Comment
+Nom: First-Name
+Prenom: Last-Name
+Supprimer: Delete
+'Demande envoyés': 'Request send'
+'Demande recues': 'Request received'
+Accepter: Accept
+Refuser: Denied
+'Mon profil': 'My profile'
+Username: __Username
+Sexe: __Sex
+Email: __Email
+Colocations: Flatsharing
+'Les nouvelles colocations': 'the new flatsharing'
+menu.rss: menu.rss
+'Changer le style': 'Change the style'
+'Changer de theme': 'Change the theme'
+'Affiner la recherche': 'refine the search'
+'Par Ville': 'By city'
+'Par Type': 'By Type'
+'Par nombre de personne': 'By number of person'
+'Par Prix': 'By Price'
+'Prix Min': 'Price Min'
+'Prix Max': 'Price Max'

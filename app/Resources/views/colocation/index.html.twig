@@ -3,7 +3,7 @@
 {% block coteG %}
 			<div class="col-md-3">
 				<div id="balise">
-	<h4>Changer le style</h4>
+	<h4>{{ 'Changer le style' | trans }}</h4>
 		<form name='theme' method = "POST" class="form-horizontal"  action="" >
 	<SELECT class="form-control" name = 'style'>
 	<OPTION value = "NULL" selected> ...</option>
@@ -11,16 +11,17 @@
 		<OPTION value = "2.css" > Style 2 </option>
 		<OPTION value = "3.css" > Style 3 </option>
 	</select>
-	<br>
-	<INPUT type ="submit" name="Changer" class="btn btn-success" value = "Changer de theme" />
+
+	<INPUT type ="submit" name="Changer" class="btn btn-success" value = "{{'Changer de theme' | trans }}" />
 	</form>
-	<h4>Affiner la recherche</h4>
+		<br>
+	<h4>{{'Affiner la recherche' | trans }}</h4>
 	<form method="POST" name="colocation" class="form-horizontal" action="">
 
-		<label for='ville'>Par Ville</label>
+		<label for='ville'>{{'Par Ville' | trans }}</label>
 		<input class="form-control" type="text" name='ville' id='ville' />
 	
-		<label for='type'>Par Type</label>
+		<label for='type'>{{'Par Type' | trans}}</label>
 		<select class="form-control" name="type" id='type'>
 			  <option value="NULL" selected>...</option> 
 			  <option value="T1" >T1</option> 
@@ -31,7 +32,7 @@
 			  <option value="T6">T6 et +</option>
 			  
 		</select><br>
-		<label for='pers'>Par nombre de personne</label>
+		<label for='pers'>{{'Par nombre de personne' | trans }}</label>
 		<select class="form-control" name="nbPers" id='pers'>
 			  <option value="NULL" selected>...</option> 
 			  <option>2</option> 
@@ -41,10 +42,10 @@
 			  <option value = 6 >6 et +</option>
   
 		</select><br>
-		<label >Par Prix</label>
+		<label >{{'Par Prix' | trans }}</label>
 		
 		<select class="form-control"  name="prixMin">
-			  <option value="NULL" selected>Prix Min</option> 
+			  <option value="NULL" selected>{{'Prix Min' | trans }}</option> 
 			   <option value="0" >0</option> 
 			  <option value="100" >100</option> 
 			  <option value="200">200</option>
@@ -55,11 +56,11 @@
 			  <option value="700">700</option>
 			  <option value="800">800</option>
 			  <option value="900">900</option>
-			  <option value="1000">1000 et +</option>
+			  <option value="1000">1000 +</option>
 			  
 		</select>
 		<select  class="form-control" name="prixMax" id='prix'>
-			  <option value="NULL" selected>Prix Max</option> 
+			  <option value="NULL" selected>{{ 'Prix Max' | trans }}</option> 
 			   <option value="0" >0</option> 
 			  <option value="100" >100</option> 
 			  <option value="200">200</option>
@@ -70,7 +71,7 @@
 			  <option value="700">700</option>
 			  <option value="800">800</option>
 			  <option value="900">900</option>
-			  <option value="1000">1000 et +</option>
+			  <option value="1000">1000 +</option>
 			  
 		</select><br><br>
 		<input type="submit" name="recherche" value="Valider" class="btn btn-success"/>
@@ -81,7 +82,7 @@
 {% endblock coteG %}				
 
 {% block body %}
-<div  class="col-md-9">
+<div  class="col-md-9 col-sm-9">
 {{ wo_render_breadcrumbs() }}
 </div>
 
@@ -107,23 +108,17 @@
 			
 				{% for item in colocations %}
 				<div class="col-md-4 grille" >
+			
 						{{ 'nbChambre' |trans }} : {{item.getNbChambre()}} <br>
 						{{ 'nbPers' |trans }} : {{item.getNbPers()}}<br>
 						{{ 'Ville' |trans }} : {{item.Ville()}}<br>
 						{{ 'Prix' |trans }} : {{item.prix()}} € <br>
 						
-							
-						<a href={{ path('showColoc', {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
-						<!-- <a href={{ path('editColoc',{'id': item.getId() }) }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a>  -->
-						 
-						<!-- <a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{item.getId()}});">{{ 'delete'|trans }}<a/> -->
-						<!-- <div id="{{item.getId()}}" style="display:none;"> -->
 						
-							<!-- <h6>{{'Are you sure you want to delete'|trans}}</h6> -->
-							<!-- <a id= "cacher2" href="delete/{{item.getId()}}">{{'Yes'| trans}}</a> -->
-							<!-- <a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{item.getId()}});">{{ 'No'| trans}}</a> -->
-							
-						<!-- </div> -->
+						<a href={{ path('showColoc', {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
+						
+						 
+					
 						<br>
 				</div>
 				{% endfor %}

@@ -27,17 +27,16 @@
 		*/
 		public function indexAction(Request $request)
 		{	
-			if(!empty($_POST['style'])){
+			if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
 
 				$_SESSION['theme'] = $_POST['style'];
 				
 			}else{
-				if(empty($_SESSION['theme'])){
+				if(!isset($_SESSION['theme'])){
 					$_SESSION['theme'] = 'CSS.css';
 				}
+				
 			}
-			
-
 			
 			
 
@@ -316,30 +315,36 @@
 		
 		public function updateAction(Colocations $Coloc,Request $request)
 		{
-			if(!isset($_POST['Valider'])){
-				
-								
-				$breadcrumbs = $this->get("white_october_breadcrumbs");
-				
-				// Pass "_demo" route name without any parameters
-				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
-				$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
-				$breadcrumbs->addItem("Editer");
-				
-				$form = $this->createForm(ColocationsType::class,$Coloc);
-				$form->handleRequest($request);
-				if(!$form->isSubmitted() || !$form->isValid()){
-					return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),'theme'=>$_SESSION['theme'],]);
-				}
-
+			if($Coloc->getUser() != $this->getUser()){
+				return $this->render('accesDenied/index.html.twig',['theme'=>$_SESSION['theme'],]);
 			}
-			else{
-				$form = $this->createForm(ColocationsType::class,$Coloc);
-				$form->handleRequest($request);
-				$em=$this->getDoctrine()->getManager();
-				$em->flush();				
-				unset($_POST);
-				return $this->redirectToRoute('homepage');
+			else
+			{
+				if(!isset($_POST['Valider'])){
+					
+									
+					$breadcrumbs = $this->get("white_october_breadcrumbs");
+					
+					// Pass "_demo" route name without any parameters
+					$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+					$breadcrumbs->addItem("Mes annonces", $this->get("router")->generate("mesAnnonces"));
+					$breadcrumbs->addItem("Editer");
+					
+					$form = $this->createForm(ColocationsType::class,$Coloc);
+					$form->handleRequest($request);
+					if(!$form->isSubmitted() || !$form->isValid()){
+						return $this->render('colocation/edit.html.twig',['coloc'=>$Coloc, 'edit_coloc_form'=>$form->createView(),'theme'=>$_SESSION['theme'],]);
+					}
+
+				}
+				else{
+					$form = $this->createForm(ColocationsType::class,$Coloc);
+					$form->handleRequest($request);
+					$em=$this->getDoctrine()->getManager();
+					$em->flush();				
+					unset($_POST);
+					return $this->redirectToRoute('homepage');
+				}
 			}
 		}
 		
@@ -359,6 +364,7 @@
 			$id = $Coloc->getId();
 			$find = $repository->find($id);
 			if( null != $find){
+				
 				return $this->render('colocation/show.html.twig',['colocations'=>$Coloc,'theme' =>$_SESSION['theme'], 'coloc'=>$id ]);
 				
 			}
@@ -384,6 +390,16 @@
 		* @throws \LogicException
 		*/
 		public function mesAnnonces(Request $request){
+			if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				if(!isset($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
+				
+			}
 			if(!isset($_POST['mesAnnonces'])){
 				$repository=$this->getDoctrine()->getRepository(Colocations::class);
 				$Coloc=$repository->findAll();

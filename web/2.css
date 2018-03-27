@@ -84,3 +84,18 @@ code { background: #F5F5F5; max-width: 100px; padding: 2px 6px; word-wrap: break
 	border-color : black;
 
 }
+#centre{ 
+	background: #77FFCC;
+	font: 18px/1.5 sans-serif;
+	border-radius: 5px;
+	padding : 30px;
+	float: none;
+	margin: 0 auto;
+	
+}
+#ariane{ 
+
+	float: none;
+	margin: 0 auto;
+	
+}

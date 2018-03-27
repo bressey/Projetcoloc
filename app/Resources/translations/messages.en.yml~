@@ -1,14 +1,43 @@
-sign_up: Sign Up
-login: Login
-action.cancel: Cancel
-colocations: Flats
-nbChambre: Number of rooms
-nbPers: Number of Persons
+action.cancel: cancel
+colocations: flatsharing
+nbChambre: Number of room
+nbPers: Number of person
 adresse: Adress
-show: Details
-edit: Edit
-delete: Delete
-Ajout_coloc: Add flat
-'Are you sure you want to delete': Are you sure you want to delete ?
+Prix: Price
+show: show
+edit: edit
+delete: delete
+'Are you sure you want to delete': 'Are you sure you want to delete'
 'Yes': Yes
 'No': No
+Mes_annonces: My ads
+Ajout_coloc: add flat
+Mon_profil: My prfile
+Mes_demandes: My requests
+Mes_colocataires: My roommates
+sign_up: sign_up
+'Flux RSS code': 'Flux RSS code'
+Ville: City
+Adresse: Adress
+action.edit_colocations: __edit
+action.delete_colocations: delete
+'Les informations': 'The informations'
+Type: Type
+'Faire une demande': 'Make a request'
+'Mes colocataires': 'My roommates'
+'Infos de la personne :': 'Infos of the person :'
+Commentaire: Comment
+Nom: First-Name
+Prenom: Last-Name
+Supprimer: Delete
+'Demande envoyés': 'Request send'
+'Demande recues': 'Request received'
+Accepter: Accept
+Refuser: Denied
+'Mon profil': 'My profile'
+Username: __Username
+Sexe: __Sex
+Email: __Email
+Colocations: Flatsharing
+'Les nouvelles colocations': 'the new flatsharing'
+menu.rss: menu.rss

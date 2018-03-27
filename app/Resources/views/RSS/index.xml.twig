@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+    <channel>
+        <title>{{ 'Colocations'|trans }}</title>
+        <description>{{ 'Les nouvelles colocations'|trans }}</description>
+        <pubDate>{{ 'now'|date('r', timezone='GMT') }}</pubDate>
+        <lastBuildDate>{{ (colocations|last).publishedAt|default('now')|date('r', timezone='GMT') }}</lastBuildDate>
+        <language>{{ app.request.locale }}</language>
+
+        {% for item in colocations %}
+            <item>
+                <colocation>
+					<ville>{{item.getVille()}}</ville>
+					<adresse>{{item.getAdresse()}}</adresse>
+					<nbChambre>{{item.getNbChambre()}}</nbChambre>
+					<nbPers>{{item.getNbPers()}}</nbPers>
+					<prix>{{item.getPrix()}}</prix>
+				</colocation>
+            </item>
+        {% endfor %}
+    </channel>
+</rss>

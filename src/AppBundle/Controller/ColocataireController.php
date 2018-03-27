@@ -24,6 +24,7 @@
 	class ColocataireController extends Controller
 	{
 		
+		
 		/**
 		*@Route("/profil/",name="monProfil")
 		* @return \Symfony\Component\HttpFoundaztion\Response
@@ -31,6 +32,8 @@
 		*/
 		public function monProfil(Request $request)
 		{
+			
+			
 			$breadcrumbs = $this->get("white_october_breadcrumbs");
 			
 			// Pass "_demo" route name without any parameters
@@ -58,6 +61,8 @@
 		
 		public function editProfil(Request $request)
 		{
+					
+			
 			if(!isset($_POST['Valider'])){
 				
 								
@@ -87,6 +92,35 @@
 				unset($_POST);
 				return $this->redirectToRoute('homepage');
 			}
+		}
+		
+		/**
+		*@Route("/Administrateur/",name="administrateur")
+		* @return \Symfony\Component\HttpFoundaztion\Response
+		* @throws \LogicException
+		*/
+		public function administrateur(Request $request)
+		{
+			
+			
+			$breadcrumbs = $this->get("white_october_breadcrumbs");
+			
+			// Pass "_demo" route name without any parameters
+			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+			$breadcrumbs->addItem("Administrateur");
+				
+			
+			$repository=$this->getDoctrine()->getRepository(Colocataires::class);
+			
+			
+			$coloc = $repository->findAll();
+			if( null != $coloc){
+				return $this->render('profil/admin.html.twig',['profil'=>$coloc,'theme' =>$_SESSION['theme'] ,]);
+			}
+			
+			return $this->redirectToRoute('homepage');
+		
+		
 		}
 	}
 	

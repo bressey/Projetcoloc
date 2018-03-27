@@ -19,6 +19,7 @@
 	*/
 	class DemandeController extends Controller
 	{	
+
 		/**
 		* @Route("/mesColocataires/",name="mesColocataires")
 		* @return \Symfony\Component\HttpFoundaztion\Response
@@ -26,6 +27,17 @@
 		*/
 		public function mesColocataires(Request $request)
 		{
+					if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				if(!isset($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
+				
+			}
+			
 			$breadcrumbs = $this->get("white_october_breadcrumbs");
 			
 			//Pass "_demo" route name without any parameters
@@ -53,6 +65,17 @@
 		*/
 		public function demandeAjout(Colocations $coloc, Request $request)
 		{
+					if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				if(!isset($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
+				
+			}
+			
 			$breadcrumbs = $this->get("white_october_breadcrumbs");
 				
 			// Pass "_demo" route name without any parameters
@@ -93,6 +116,17 @@
 		
 		public function updateDemande(Demande $demande,Request $request)
 		{
+			if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				if(!isset($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
+				
+			}
+			
 			$repository=$this->getDoctrine()->getRepository(Demande::class);
 			$id = $demande->getId();
 			$find = $repository->find($id);
@@ -144,6 +178,17 @@
 		*/
 		 public function mesDemandes(Request $request)
 		{
+			if(!empty($_POST['style']) AND ($_POST['style'] != "NULL")){
+
+				$_SESSION['theme'] = $_POST['style'];
+				
+			}else{
+				if(!isset($_SESSION['theme'])){
+					$_SESSION['theme'] = 'CSS.css';
+				}
+				
+			}
+			
 			if(!isset($_POST['mesDemandes'])){
 				$repository=$this->getDoctrine()->getRepository(Demande::class);
 				
