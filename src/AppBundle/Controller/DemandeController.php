@@ -100,7 +100,6 @@
 				$demande->setUser($this->getUser());
 				$demande->setColocation($coloc);
 				$demande->setEtat('Attente');
-				
 				$em=$this->getDoctrine()->getManager();
 				$em->persist($demande);
 				$em->flush();

@@ -11,21 +11,27 @@
     		<div class="row">
 		    	<h3>{{'Les informations'|trans}}</h3>
 		    </div>
-			<div class="row">
-				{{'Ville'|trans}}: {{colocations.getVille()}}
-			</div>
-			<div class="row">
-				{{'Adresse'|trans}}: {{colocations.getAdresse()}}
-			</div>
-			<div class="row">
-				{{'Type'|trans}}: {{colocations.getType()}}
-			</div>
-			<div class="row">
-				{{'nbChambre'|trans}}: {{colocations.getNbChambre()}}
-			</div>
-			<div class="row">
-				{{'Prix'|trans}}: {{colocations.getPrix()}} 
-			</div>
+			<table class="table">
+			  <thead class="thead-dark">
+				<tr>
+				  <th scope="col">{{'Ville'|trans}}</th>
+				  <th scope="col">{{'Adresse'|trans}}</th>
+				  <th scope="col">{{'Type'|trans}}</th>
+				  <th scope="col">{{'nbChambre'|trans}}</th>
+				   <th scope="col">{{'Prix'|trans}}</th>
+				</tr>
+			  </thead>
+			  <tbody>
+				<tr>
+				  <td>{{colocations.getVille()}}</td>
+				  <td>{{colocations.getAdresse()}}</td>
+				  <td>{{colocations.getType()}}</td>
+				  <td>{{colocations.getNbChambre()}}</td>
+				  <td>{{colocations.getPrix()}} </td>
+				</tr>
+							
+			   </tbody>
+			</table>
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 			<a href={{ path('AjoutDemande',{ "id" : colocations.getId() }) }}  class="btn btn-primary btn-md">{{ 'Faire une demande'|trans }}</a> 
 			{% endif %}

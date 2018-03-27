@@ -11,31 +11,35 @@
 				<div class="row">
 					<h3>{{'Mon profil'|trans}}</h3>
 				</div>
-				<div class="row">
-					{{'Nom'|trans}}: {{profil.getNom()}}
-				</div>
-				<div class="row">
-					{{'Prenom'|trans}}: {{profil.getPrenom()}}
-				</div>
-				<div class="row">
-					{{'Username'|trans}}: {{profil.getUsername()}} €
-				</div>
-				<div class="row">
-					{{'Sexe'|trans}}: {{profil.getSexe()}}
-				</div>
-				<div class="row">
-					{{'Email'|trans}}: {{profil.getEmail()}}
-				</div>
+				<div class="col-md-12 grille" >
+					<table class="table">
 
-				<a href={{ path('fos_user_profile_edit') }} class="btn btn-warning btn-md">{{ 'edit'|trans }}</a>
-				
+						<thead class="thead-dark">
+							<tr>
+								<th scope="row">{{ 'Username' |trans }}</th>
+								<th>{{ 'Nom' |trans }}</th>
+								<th>{{ 'Prenom' |trans }}</th>
+								<th>{{'Sexe'|trans}}</th>
+								<th>{{'Email'|trans}}</th>
+								<th>{{'edit'|trans}}</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>{{profil.getUsername()}} </td>
+								<td>{{profil.getNom()}}</td>
+								<td>{{profil.getPrenom()}}</td>
+								<td>{{profil.getSexe()}}</td>
+								<td>{{profil.getEmail()}}</td>
+								<td><a href={{ path('fos_user_profile_edit') }} class="btn btn-warning glyphicon glyphicon-pencil btn-md"> {{ 'edit'|trans }}</a></td>
+							</tr>
 
+						</tbody>
+					</table>	
+				</div>
 			</div>
-			
-
-		</div>
-		
 	</div>
 </div>
+
 
 {% endblock body %}

@@ -101,27 +101,41 @@
 			}
 		</script>
 	
-		
-						
-			
+
 			<h1> {{ 'colocations'|trans }} </h1>
 			
-				{% for item in colocations %}
-				<div class="col-md-4 grille" >
+				<table class="table">
+			  <thead class="thead-dark">
+				<tr>
+				  <th scope="col">{{'Ville'|trans}}</th>
+				  <th scope="col">{{'Adresse'|trans}}</th>
+				  <th scope="col">{{'Type'|trans}}</th>
+				  <th scope="col">{{'nbChambre'|trans}}</th>
+				  <th scope="col">{{'Prix'|trans}}</th>
+				  <th scope="col"> {{ 'show' | trans }}</th>
+				</tr>
+			  </thead>
+			  <tbody>
 			
-						{{ 'nbChambre' |trans }} : {{item.getNbChambre()}} <br>
-						{{ 'nbPers' |trans }} : {{item.getNbPers()}}<br>
-						{{ 'Ville' |trans }} : {{item.Ville()}}<br>
-						{{ 'Prix' |trans }} : {{item.prix()}} € <br>
-						
-						
-						<a href={{ path('showColoc', {'id': item.getId() }) }}  class="btn btn-primary btn-md">{{ 'show'|trans }}</a> 
-						
-						 
-					
-						<br>
-				</div>
+				{% for item in colocations %}
+
+				<tr>
+				  <td>{{item.getVille()}}</td>
+				  <td>{{item.getAdresse()}}</td>
+				  <td>{{item.getType()}}</td>
+				  <td>{{item.getNbChambre()}}</td>
+				  <td>{{item.getPrix()}} €</td>
+				<td>				
+				<a href={{ path('showColoc', {'id': item.getId() }) }}  class="btn btn-primary glyphicon glyphicon-eye-open btn-md"> {{ 'show'|trans }}</a> 
+
+				</td>
+				</tr>
+				<br>
+				
 				{% endfor %}
+			  </tbody>
+			</table>
+
 </div>
 {% endblock body %}
 

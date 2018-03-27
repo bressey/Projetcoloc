@@ -1,46 +1,3 @@
-action.cancel: Annuler
-colocations: Colocations
-nbChambre: Nombre de chambre
-nbPers: Nombre de personne
-adresse: Adresse
-Prix: Prix
-show: Détail
-edit: Editer
-delete: Supprimer
-'Are you sure you want to delete': 'Etes vous sur de vouloir suppprimer cette annonce'
-'Yes': Oui
-'No': Non
-Mes_annonces: Mes_annonces
-Ajout_coloc: Ajouter une colocation
-Mon_profil: Mon_profil
-Mes_demandes: Mes demandes
-Mes_colocataires: Mes colocataires
-sign_up: S'inscrire
-'Flux RSS code': 'Flux RSS code'
-Ville: Ville
-Adresse: Adresse
-action.edit_colocations: Editer
-action.delete_colocations: Supprimer
-'Les informations': 'Les informations'
-Type: Type
-'Faire une demande': 'Faire une demande'
-'Mes colocataires': 'Mes colocataires'
-'Infos de la personne :': 'Infos de la personne :'
-Commentaire: Commentaire
-Nom: Nom
-Prenom: Prenom
-Supprimer: Supprimer
-'Demande envoyés': 'Demande envoyées'
-'Demande recues': 'Demande recues'
-Accepter: Accepter
-Refuser: Refuser
-'Mon profil': 'Mon profil'
-Username: Pseudo
-Sexe: Sexe
-Email: Email
-Colocations: Colocations
-'Les nouvelles colocations': 'Les nouvelles colocations'
-menu.rss: menu.rss
 'Changer le style': 'Changer le style'
 'Changer de theme': 'Changer de theme'
 'Affiner la recherche': 'Affiner la recherche'
@@ -50,3 +7,44 @@ menu.rss: menu.rss
 'Par Prix': 'Par Prix'
 'Prix Min': 'Prix Min'
 'Prix Max': 'Prix Max'
+action.cancel: Retour
+colocations: Colocations
+Ville: Ville
+Adresse: Adresse
+Type: Type
+nbChambre: Nombre de Chambre
+Prix: Prix
+show: Detail
+edit: Editer
+delete: Supprimer
+'Are you sure you want to delete': 'Etes vous sur de vouloir supprimer ?'
+'Yes': Oui
+'No': Non
+Mes_annonces: Mes annonces
+Ajout_coloc: Ajouter colocation
+Mon_profil: Mon profil
+Mes_demandes: Mes demandes
+Mes_colocataires: Mes colocataires
+'Gestion des utilisateurs': 'Gestion des utilisateurs'
+sign_up: S'inscrire
+'Flux RSS code': 'Flux RSS code'
+action.edit_colocations: Editer
+action.delete_colocations: Supprimer
+'Les informations': 'Les informations'
+'Faire une demande': 'Faire une demande'
+'Mes colocataires': 'Mes colocataires'
+Nom: Nom
+Prenom: Prenom
+Commentaire: Commentaire
+'Demande envoyés': 'Demande envoyés'
+'Demande recues': 'Demande recues'
+Accepter: Accepter
+Refuser: Refuser
+Username: Pseudo
+'Mon profil': 'Mon profil'
+Sexe: Sexe
+Email: Email
+Colocations: Colocations
+'Les nouvelles colocations': 'Les nouvelles colocations'
+menu.rss: menu.rss
+'Envoyer demande': 'Envoyer demande'

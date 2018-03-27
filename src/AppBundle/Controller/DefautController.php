@@ -18,7 +18,7 @@
 	class DefautController extends Controller
 	{	
 		/**
-		* @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, name="fluxRSS")
+		* @Route("/rss.xml", defaults={"page": "1", "_format"="xml"} ,name="fluxRSS")
 		* @return \Symfony\Component\HttpFoundaztion\Response
 		* @throws \LogicException
 		*/

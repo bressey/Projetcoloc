@@ -1,8 +1,18 @@
+'Changer le style': '__Changer le style'
+'Changer de theme': '__Changer de theme'
+'Affiner la recherche': '__Affiner la recherche'
+'Par Ville': '__Par Ville'
+'Par Type': '__Par Type'
+'Par nombre de personne': '__Par nombre de personne'
+'Par Prix': '__Par Prix'
+'Prix Min': '__Prix Min'
+'Prix Max': '__Prix Max'
 action.cancel: __action.cancel
 colocations: __colocations
+Ville: __Ville
+Adresse: __Adresse
+Type: __Type
 nbChambre: __nbChambre
-nbPers: __nbPers
-adresse: __adresse
 Prix: __Prix
 show: __show
 edit: __edit
@@ -15,27 +25,23 @@ Ajout_coloc: __Ajout_coloc
 Mon_profil: __Mon_profil
 Mes_demandes: __Mes_demandes
 Mes_colocataires: __Mes_colocataires
+'Gestion des utilisateurs': '__Gestion des utilisateurs'
 sign_up: __sign_up
 'Flux RSS code': '__Flux RSS code'
-Ville: __Ville
-Adresse: __Adresse
 action.edit_colocations: __action.edit_colocations
 action.delete_colocations: __action.delete_colocations
 'Les informations': '__Les informations'
-Type: __Type
 'Faire une demande': '__Faire une demande'
 'Mes colocataires': '__Mes colocataires'
-'Infos de la personne :': '__Infos de la personne :'
-Commentaire: __Commentaire
 Nom: __Nom
 Prenom: __Prenom
-Supprimer: __Supprimer
+Commentaire: __Commentaire
 'Demande envoyés': '__Demande envoyés'
 'Demande recues': '__Demande recues'
 Accepter: __Accepter
 Refuser: __Refuser
-'Mon profil': '__Mon profil'
 Username: __Username
+'Mon profil': '__Mon profil'
 Sexe: __Sexe
 Email: __Email
 Colocations: __Colocations

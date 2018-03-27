@@ -102,23 +102,73 @@
 		public function administrateur(Request $request)
 		{
 			
-			
-			$breadcrumbs = $this->get("white_october_breadcrumbs");
-			
-			// Pass "_demo" route name without any parameters
-			$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
-			$breadcrumbs->addItem("Administrateur");
-				
-			
-			$repository=$this->getDoctrine()->getRepository(Colocataires::class);
-			
-			
-			$coloc = $repository->findAll();
-			if( null != $coloc){
-				return $this->render('profil/admin.html.twig',['profil'=>$coloc,'theme' =>$_SESSION['theme'] ,]);
+			if($this->getUser()==null or !( in_array('ROLE_ADMIN', $this->getUser()->getRoles()))){
+				return $this->render('accesDenied/index.html.twig',['theme'=>$_SESSION['theme'],]);
 			}
+			else
+			{
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Administrateur");
+					
+				
+				$repository=$this->getDoctrine()->getRepository(Colocataires::class);
+				
+				
+				$coloc = $repository->findAll();
+				if( null != $coloc){
+					return $this->render('profil/admin.html.twig',['profil'=>$coloc,'theme' =>$_SESSION['theme'] ,]);
+				}
+				
+				return $this->redirectToRoute('homepage');
 			
-			return $this->redirectToRoute('homepage');
+			}
+		}
+		
+		/**
+		*@Route("/DeleteUser/{id}",requirements={"id": "\d+"}, name="deleteUser"),name="administrateur")
+		* @return \Symfony\Component\HttpFoundaztion\Response
+		* @throws \LogicException
+		*/
+		public function deleteUser(Colocataires $user, Request $request)
+		{
+			if(!( in_array('ROLE_ADMIN', $this->getUser()->getRoles()))){
+				return $this->render('accesDenied/index.html.twig',['theme'=>$_SESSION['theme'],]);
+			}
+			else
+			{
+				
+				$user->setEnabled(false);
+				$em=$this->getDoctrine()->getManager();
+				$em->persist($user);
+				$em->flush();
+				
+				
+				$breadcrumbs = $this->get("white_october_breadcrumbs");
+				
+				// Pass "_demo" route name without any parameters
+				$breadcrumbs->addItem("Homepage", $this->get("router")->generate("homepage"));
+				$breadcrumbs->addItem("Administrateur");
+					
+				
+				$repository=$this->getDoctrine()->getRepository(Colocataires::class);
+				
+				
+				$coloc = $repository->findAll();
+				$col = Array();
+				foreach($coloc as $c){
+					if($c->isEnabled() == true){
+					$col[]=$c;
+					}
+				}
+				if( null != $coloc){
+					return $this->render('profil/admin.html.twig',['profil'=>$col,'theme' =>$_SESSION['theme'] ,]);
+				}
+				
+				return $this->redirectToRoute('homepage');
+			}
 		
 		
 		}

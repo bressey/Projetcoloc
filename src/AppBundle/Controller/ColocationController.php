@@ -247,7 +247,7 @@
 		}
 		
 		
-		function prixInf(Array $Coloc, String $prixMax, String $prixMin)
+		function prixInf(Array $Coloc, $prixMax, $prixMin)
 		{
 			$price = Array();
 			foreach($Coloc as $c){

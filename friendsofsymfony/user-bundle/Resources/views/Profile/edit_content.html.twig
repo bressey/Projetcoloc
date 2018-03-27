@@ -1,0 +1,12 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" class="btn btn-warning btn-md" value="{{ 'profile.edit.submit'|trans }}" />
+		<a href={{ path('fos_user_change_password') }} class="btn btn-danger btn-md">{{ 'Changer le mot de passe'|trans }}</a>
+    </div>
+	
+	
+{{ form_end(form) }}

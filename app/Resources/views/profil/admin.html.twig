@@ -1,6 +1,7 @@
 {% extends "@FOSUser/layout.html.twig" %}
 
 {% block body %}
+
 <div  id="ariane" class="col-md-9">
 {{ wo_render_breadcrumbs() }}
 </div>
@@ -11,19 +12,34 @@
 				<div class="row">
 					<h3>{{'Gestion des utilisateurs'|trans}}</h3>
 				</div>
+				<div class="col-md-12 grille" >
+				<table class="table">
+
+				 <thead class="thead-dark">
+				<tr>
+					<th scope="row">{{ 'Username' |trans }}</th>
+					<th>{{ 'Nom' |trans }}</th>
+					<th>{{ 'Prenom' |trans }}</th>
+					<th>{{ 'delete' |trans }}</th>
+				</tr>
+				<tbody>
 				{% for item in profil %}
-				<div class="col-md-11 grille" >
-			
-					{{ 'Username' |trans }} : {{item.getUsername()}} 
-					{{ 'Nom' |trans }} : {{item.getNom()}}
-					{{ 'Prenom' |trans }} : {{item.getPrenom()}}
-					<a href={{ path('deleteUser', {'id': item.getId() }) }}  class="btn btn-danger btn-md">{{ 'Delete'|trans }}</a> 
-						
+				
+
+				 <tr>
+					<td>{{item.getUsername()}} </td>
+					<td>{{item.getNom()}}</td>
+					<td>{{item.getPrenom()}}</td>
+					 <td><a href={{ path('deleteUser', {'id': item.getId() }) }}  class="btn btn-danger btn-md glyphicon glyphicon-trash"> {{ 'delete'|trans }}</a></td>
+				</tr>
+
+				{% endfor %}
+				</tbody>
+				</table>	
+
 						
 					<br>
 				</div>
-				
-				{% endfor %}
 			</div>
 			
 
@@ -31,5 +47,6 @@
 		
 	</div>
 </div>
+
 
 {% endblock body %}

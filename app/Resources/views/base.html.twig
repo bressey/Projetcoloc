@@ -23,23 +23,23 @@
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 				 <ul class="nav navbar-nav navbar-left">
 					<li >
-						<a href={{ path('mesAnnonces') }}> <span class="glyphicon glyphicon-th-list"></span> {{ 'Mes_annonces' | trans }} </a>
+						<a href={{ path('mesAnnonces') }}><span class="glyphicon glyphicon-th-list"></span> {{ 'Mes_annonces' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('Ajoutcoloc') }} class="glyphicon glyphicon-floppy-open"> {{ 'Ajout_coloc' | trans }} </a>
+						<a href={{ path('Ajoutcoloc') }} ><span class="glyphicon glyphicon-floppy-open"></span> {{ 'Ajout_coloc' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('monProfil') }} class="glyphicon glyphicon-user"> {{ 'Mon_profil' | trans }} </a>
+						<a href={{ path('monProfil') }} ><span class="glyphicon glyphicon-user"></span> {{ 'Mon_profil' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('mesDemandes' ) }} class="glyphicon glyphicon-envelope"> {{ 'Mes_demandes' | trans }} </a>
+						<a href={{ path('mesDemandes' ) }}><span class="glyphicon glyphicon-envelope"></span> {{ 'Mes_demandes' | trans }} </a>
 					</li>
 					<li>
-						<a href={{ path('mesColocataires' ) }} class="glyphicon glyphicon-saved"> {{ 'Mes_colocataires' | trans }} </a>
+						<a href={{ path('mesColocataires' ) }} ><span class="glyphicon glyphicon-saved"></span> {{ 'Mes_colocataires' | trans }} </a>
 					</li>
 					{% if is_granted("ROLE_ADMIN") %}
 					<li>
-						<a href={{ path('administrateur' ) }} class="glyphicon glyphicon-wrench"> {{ 'Gestion des utilisateurs' | trans }} </a>
+						<a href={{ path('administrateur' ) }}><span class="glyphicon glyphicon-wrench"><span> {{ 'Gestion des utilisateurs' | trans }} </a>
 					</li>
 					{% endif %}
 				</ul>

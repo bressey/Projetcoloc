@@ -39,7 +39,7 @@ class Demande
     private $colocation;
 	
 	 /**
-     * @var String
+     * @var string
      *
      * @ORM\Column(name="etat", type="string", length=10)
      */
@@ -131,7 +131,7 @@ class Demande
     }
 	
 	/**
-     * Get Commentaire
+     * Get comment
      *
      * @return String
      */
@@ -142,7 +142,7 @@ class Demande
 	
 	
 	/**
-     * Set Commentaires
+     * Set comment
      *
      * @return Demande
      */

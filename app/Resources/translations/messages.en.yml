@@ -1,52 +1,50 @@
-action.cancel: cancel
-colocations: flatsharing
-nbChambre: Number of room
-nbPers: Number of person
-adresse: Adress
-Prix: Price
-show: show
-edit: edit
-delete: delete
-'Are you sure you want to delete': 'Are you sure you want to delete'
-'Yes': Yes
-'No': No
-Mes_annonces: My ads
-Ajout_coloc: add flat
-Mon_profil: My prfile
-Mes_demandes: My requests
-Mes_colocataires: My roommates
-sign_up: sign_up
-'Flux RSS code': 'Flux RSS code'
-Ville: City
-Adresse: Adress
-action.edit_colocations: __edit
-action.delete_colocations: delete
-'Les informations': 'The informations'
-Type: Type
-'Faire une demande': 'Make a request'
-'Mes colocataires': 'My roommates'
-'Infos de la personne :': 'Infos of the person :'
-Commentaire: Comment
-Nom: First-Name
-Prenom: Last-Name
-Supprimer: Delete
-'Demande envoyés': 'Request send'
-'Demande recues': 'Request received'
-Accepter: Accept
-Refuser: Denied
-'Mon profil': 'My profile'
-Username: __Username
-Sexe: __Sex
-Email: __Email
-Colocations: Flatsharing
-'Les nouvelles colocations': 'the new flatsharing'
-menu.rss: menu.rss
-'Changer le style': 'Change the style'
-'Changer de theme': 'Change the theme'
-'Affiner la recherche': 'refine the search'
-'Par Ville': 'By city'
+'Changer le style': 'Change The Style'
+'Changer de theme': 'Change The Theme'
+'Affiner la recherche': 'Search'
+'Par Ville': 'By City'
 'Par Type': 'By Type'
 'Par nombre de personne': 'By number of person'
 'Par Prix': 'By Price'
 'Prix Min': 'Price Min'
 'Prix Max': 'Price Max'
+action.cancel: Cancel
+colocations: Flatsharing
+Ville: City
+Adresse: Adress
+Type: Type
+nbChambre: Number of Rooms
+Prix: Price
+show: Show
+edit: Edit
+delete: Delete
+'Are you sure you want to delete': 'Are you sure you want to delete'
+'Yes': Yes
+'No': No
+Mes_annonces: My Ads
+Ajout_coloc: Add Flatsharing
+Mon_profil: My profile
+Mes_demandes: My requests
+Mes_colocataires: My Roommates
+'Gestion des utilisateurs': 'Gestion of Users'
+sign_up: sign up
+'Flux RSS code': 'Flux RSS code'
+action.edit_colocations: edit
+action.delete_colocations: delete
+'Les informations': 'The informations'
+'Faire une demande': 'Make a request'
+'Envoyer demande': 'Send Request'
+'Mes colocataires': 'My roommates'
+Nom: First-Name
+Prenom: Last-Name
+Commentaire: Comment
+'Demande envoyés': 'Request Send'
+'Demande recues': 'Request Received'
+Accepter: Accept
+Refuser: Cancel
+Username: Username
+'Mon profil': 'My profile'
+Sexe: Sex
+Email: Email
+Colocations: Flatsharing
+'Les nouvelles colocations': 'The new flatsgaring'
+menu.rss: menu.rss

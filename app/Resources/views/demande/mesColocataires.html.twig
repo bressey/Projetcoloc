@@ -103,33 +103,44 @@
 	
 			{% if accepter|length != 0 %}			
 			<h1> {{ 'Mes colocataires'|trans }} </h1>
-		
+					<table class="table">
+			  <thead class="thead-dark">
+				<tr>
+				  <th scope="col">{{'Ville'|trans}}</th>
+				  <th scope="col">{{'Prix'|trans}}</th>
+				  <th scope="col">{{'Nom'|trans}}</th>
+				  <th scope="col">{{'Prenom'|trans}}</th>
+				  <th scope="col">{{'Commentaire'|trans}}</th>
+				</tr>
+			  </thead>
+			  <tbody>
 			{% for recu in accepter %}
-			<div class="col-md-4 grille" >
-					{{ 'Ville' |trans }} : {{recu.getColocation().Ville()}}<br>
-					{{ 'Prix' |trans }} : {{recu.getColocation().prix()}} € <br>
-					<h4> {{ 'Infos de la personne : '|trans }} </h4>
-					{{ 'Commentaire' |trans }} : {{recu.getComment()}} <br>
-					{{ 'Nom' |trans }} : {{recu.getUser().getNom() }} <br>
-					{{ 'Prenom' |trans }} : {{recu.getUser().getPrenom() }} <br>
+				<tr>
+				  <td>{{recu.getColocation().Ville()}}</td>
+				  <td>{{recu.getColocation().prix()}}</td>
+				  <td>{{recu.getUser().getNom() }}</td>
+				  <td>{{recu.getUser().getPrenom() }}</td>
+				  <td>{{recu.getComment()}}</td>
+				 <td>
+										<a href="javascript:void(0)" class="btn btn-danger btn-md glyphicon glyphicon-trash" onclick="javascript:visibilite({{recu.getId()}});"> {{ 'delete'|trans }}<a/>
+				<div id="{{recu.getId()}}" style="display:none;text-align:center;" class="col-md-11"  >
 					
+					<h6>{{'Are you sure you want to delete'|trans}}</h6>
+					<a id= "cacher2" href="delete/{{recu.getId()}}" class="btn btn-danger btn-md" >{{'Yes'| trans}}</a>
+					<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{recu.getId()}});" class="btn btn-primary btn-md" >{{ 'No'| trans}}</a>
 					
-					
-					
-					<a href="javascript:void(0)" class="btn btn-danger btn-md" onclick="javascript:visibilite({{recu.getId()}});">{{ 'Supprimer'|trans }}<a/>
-					<div id="{{recu.getId()}}" style="display:none;">
-					
-						<h6>{{'Are you sure you want to delete'|trans}}</h6>
-						<a id= "cacher2" href={{ path('deleteDemande' , {'id': recu.getId() }) }}>{{'Yes'| trans}}</a>
-						<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{recu.getId()}});">{{ 'No'| trans}}</a>
-						
-					</div>	
-					
+				</div>
+				 </td>
 
-					<br>
-			</div>
+				</tr>
+
+						
 			{% endfor %}
 			{% endif %}
+			</tbody>
+		</table>
+					
+
 			<br>
 
 </div>
