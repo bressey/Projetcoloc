@@ -377,7 +377,17 @@
 		*/
 		public function deleteAction(Colocations $Coloc,Request $request)
 		{
+			$repository=$this->getDoctrine()->getRepository(Demande::class);
 			$em=$this->getDoctrine()->getManager();
+			
+			$value = $repository->findAll();
+			foreach($value as $val){
+				if($val->getColocation() == $Coloc){
+				$em->remove($val);
+				$em->flush();
+				}
+			}
+			
 			$em->remove($Coloc);
 			$em->flush();
 			
