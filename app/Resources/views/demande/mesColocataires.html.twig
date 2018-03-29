@@ -126,7 +126,7 @@
 				<div id="{{recu.getId()}}" style="display:none;text-align:center;" class="col-md-11"  >
 					
 					<h6>{{'Are you sure you want to delete'|trans}}</h6>
-					<a id= "cacher2" href="delete/{{recu.getId()}}" class="btn btn-danger btn-md" >{{'Yes'| trans}}</a>
+					<a id= "cacher2" href={{ path('deleteDemande' , {'id': recu.getId() }) }} class="btn btn-danger btn-md" >{{'Yes'| trans}}</a>
 					<a href="javascript:void(0)" id = "cacher3" onclick="javascript:visibilite({{recu.getId()}});" class="btn btn-primary btn-md" >{{ 'No'| trans}}</a>
 					
 				</div>

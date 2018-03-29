@@ -377,17 +377,7 @@
 		*/
 		public function deleteAction(Colocations $Coloc,Request $request)
 		{
-			$repository=$this->getDoctrine()->getRepository(Demande::class);
 			$em=$this->getDoctrine()->getManager();
-			
-			$value = $repository->findAll();
-			foreach($value as $val){
-				if($val->getColocation() == $Coloc){
-				$em->remove($val);
-				$em->flush();
-				}
-			}
-			
 			$em->remove($Coloc);
 			$em->flush();
 			
@@ -426,7 +416,25 @@
 				return $this->render('annonce/mesAnnonces.html.twig',['colocations'=>$Coloc,'theme' =>$_SESSION['theme'] ]);
 			}
 		}
-	
+		/**
+		* @Route("/duplicate/{id}",requirements={"id": "\d+"}, name="duplicateColoc")
+		*/
+		public function duplicate(Colocations $Coloc,Request $request)
+		{
+			
+				$coloc=new Colocations();
+				$coloc->setVille($Coloc->getVille());
+				$coloc->setAdresse($Coloc->getAdresse());
+				$coloc->setType($Coloc->getType());
+				$coloc->setPrix($Coloc->getPrix());
+				$coloc->setNbPers($Coloc->getNbPers());
+				$coloc->setNbChambre($Coloc->getNbChambre());
+				$coloc->setUser($this->getUser());
+				$em=$this->getDoctrine()->getManager();
+				$em->persist($coloc);
+				$em->flush();
+				return $this->redirectToRoute('homepage');
+		}
 			
 	}
 	

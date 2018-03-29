@@ -113,6 +113,7 @@
 				  <th scope="col">{{'nbChambre'|trans}}</th>
 				  <th scope="col">{{'Prix'|trans}}</th>
 				  <th scope="col"> {{ 'show' | trans }}</th>
+				   <th scope="col"> {{ 'duplicate' | trans }}</th>
 				</tr>
 			  </thead>
 			  <tbody>
@@ -127,6 +128,8 @@
 				  <td>{{item.getPrix()}} €</td>
 				<td>				
 				<a href={{ path('showColoc', {'id': item.getId() }) }}  class="btn btn-primary glyphicon glyphicon-eye-open btn-md"> {{ 'show'|trans }}</a> 
+				</td><td>
+				<a href={{ path('duplicateColoc', {'id': item.getId() }) }}  class="btn btn-danger glyphicon glyphicon-pencil btn-md"> {{ 'duplicate'|trans }}</a> 
 
 				</td>
 				</tr>
