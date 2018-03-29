@@ -1,0 +1,11 @@
+{% extends "@FOSUser/layout.html.twig" %}
+
+{% block fos_user_content %}
+<div  id="ariane" class="col-md-9">
+{{ wo_render_breadcrumbs() }}
+</div>
+
+<div id="centre" class="col-md-10">
+    {{ include('@FOSUser/Security/login_content.html.twig') }}
+	</div>
+{% endblock fos_user_content %}
